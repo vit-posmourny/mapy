@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="h-screen font-sans antialiased dark:bg-black dark:text-white/50">
        
         <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
             
