@@ -44,8 +44,8 @@
 
         <main class="flex flex-col items-center h-auto w-auto">
 
-            <div class="bg-[url('../imgs/vecteezy_africa-safari-1000x785.png')] bg-center w-[1000px] h-[785px]"></div>
-            <a href="https://www.vecteezy.com/free-png/street-map" target="_blank" class="hover:text-gray-500">Street Map PNGs by Vecteezy</a>
+             <div class="bg-[url('../imgs/vecteezy_africa-safari-map-1000x785.png')] w-[1000px] h-[785px] bg-center"></div>
+             <a href="https://www.vecteezy.com/free-png/street-map" target="_blank" class="hover:text-gray-500">Street Map PNGs by Vecteezy</a>
                 
         </main>
 
