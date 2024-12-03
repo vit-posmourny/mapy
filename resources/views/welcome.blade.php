@@ -1,3 +1,4 @@
+<!-- resources\views\welcome.blade.php -->
 <!DOCTYPE html>
 <html lang="cs">
     <head>
@@ -14,19 +15,19 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="h-screen font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="flex flex-col h-screen font-sans antialiased dark:bg-black dark:text-white/50">
        
-        <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
+        <header class="flex-imitial justify-items-end">
             
             @if (Route::has('login'))
-                <nav class="flex flex-1 justify-evenly">
+                <nav class="flex gap-8 mb-4 mr-[3vw]">
                     @auth
                         <a href="{{ url('/dashboard') }}">
                             <x-secondary-button>Dashboard</x-secondary-button>
                         </a>
                     @else
                         <a href="{{ route('login') }}">
-                            <x-primary-button>Přihlásit</x-primary-button>
+                            <x-secondary-button>Přihlásit</x-primary-button>
                         </a>
 
                         @if (Route::has('register'))
@@ -41,8 +42,11 @@
 
         </header>
 
-        <main class="mt-6">
-            
+        <main class="flex flex-col items-center h-auto w-auto">
+
+            <div class="bg-[url('../imgs/vecteezy_africa-safari-1000x785.png')] bg-center w-[1000px] h-[785px]"></div>
+            <a href="https://www.vecteezy.com/free-png/street-map" target="_blank" class="hover:text-gray-500">Street Map PNGs by Vecteezy</a>
+                
         </main>
 
     </body>
