@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+      --dark-wood: 184 143 99;
+      /* ... */
+    }
+}

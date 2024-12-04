@@ -14,8 +14,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                // Using modern `rgb`
+                dark_wood: 'rgb(var(--dark-wood))',
+            },
         },
     },
 
     plugins: [forms],
 };
+
