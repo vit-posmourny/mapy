@@ -1,1 +1,1 @@
-<div {{$attributes}} class="bg-[url('../imgs/vecteezy_africa-safari-compass-100x125.png')] w-[100px] h-[125px]"></div>
+<div {{$attributes}} class="bg-[url('../imgs/vecteezy_africa-safari-compass-100x125.png')] w-[100px] h-[125px] drop-shadow-[5px_10px_10px_rgba(0,0,0,0.4)]"></div>
