@@ -44,7 +44,7 @@
 
         <main class="flex flex-col items-center h-auto w-auto">
 
-             <div class="bg-[url('../imgs/vecteezy_africa-safari-map-1000x785.png')] w-[1000px] h-[785px] bg-center"></div>
+             <img src="images/vecteezy_africa-safari-map-1000x785.png"/>
              <a href="https://www.vecteezy.com/free-png/street-map" target="_blank" class="hover:text-gray-500">Street Map PNGs by Vecteezy</a>
                 
         </main>
