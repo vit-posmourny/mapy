@@ -1,1 +1,5 @@
-<div {{$attributes}} class="bg-[url('../imgs/vecteezy_africa-safari-compass-100x125.png')] w-[100px] h-[125px]"></div>
+<img src="images/logos/vecteezy_africa-safari-compass-100x125.png" {{$attributes->merge(
+
+    [ "class" => ""]
+    
+)}}></img>
