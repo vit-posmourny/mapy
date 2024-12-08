@@ -19,7 +19,9 @@
             </div>
 
                 <div class="size-1/2 mt-8">
-                    <img src="images/vecteezy_africa-safari-map-1000x785.png"/>
+                    <a href="/">
+                        <img src="images/vecteezy_africa-safari-map-1000x785.png"/>
+                    </a>   
                 </div>
                 
                 <a href="https://www.vecteezy.com/free-png/street-map" target="_blank" class="hover:text-gray-500 pr-12">Street Map PNGs by Vecteezy</a>

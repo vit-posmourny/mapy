@@ -5,8 +5,7 @@ const API_KEY = 'ZKBUR07BFrPvZSJKn3JnO8eL-g7FqYN9Ufcp4QHwnxo';
 We create the map and set its initial coordinates and zoom.
 See https://leafletjs.com/reference.html#map
 */
-const map = L.map('map').setView([49.8729317, 14.8981184], 16);
-
+const map = L.map('map').setView([50.0843453, 14.4792458], 12);
 /*
 Then we add a raster tile layer with REST API Mapy.cz tiles
 See https://leafletjs.com/reference.html#tilelayer
