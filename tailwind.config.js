@@ -18,6 +18,7 @@ export default {
             colors: {
                 // Using modern `rgb`
                 dark_wood: 'rgb(var(--dark-wood))',
+                light_wood: 'rgb(var(--light-wood))',
             },
         },
     },

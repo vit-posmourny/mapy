@@ -32,8 +32,14 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
+            <main class="flex justify-center">
+
+                {{$slot}}
+
+                @if (request()->path() == 'search')
+                    @include('side-panel')
+                @endif
+                
             </main>
         </div>
     

@@ -42,3 +42,26 @@ const LogoControl = L.Control.extend({
 
 // finally we add our LogoControl to the map
 new LogoControl().addTo(map);
+
+
+// Přidání události 'click' na mapu (Zjištění výšky)
+map.on('click', function(e) {
+  // Získání souřadnic kliknutí
+  let lat = e.latlng.lat;
+  let lon = e.latlng.lng;
+
+  // Volání API pro získání výšky
+  fetch(`https://api.mapy.cz/v1/elevation?lang=cs&positions=${lon}%2C${lat}&apikey=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => {
+          // Získání výšky z odpovědi API
+          let elevation = data.items[0].elevation;
+
+          // Vytvoření popup okna s výškou
+          L.popup()
+              .setLatLng(e.latlng)
+              .setContent(`Výška: ${elevation} metrů`)
+              .openOn(map);
+      })
+      .catch(error => console.error('Chyba při volání API: ', error));
+});
