@@ -39,7 +39,7 @@
                 {{$slot}}
 
                 @if (request()->path() == 'elevation')
-                    @include('side-panel')
+                    @include('livewire.side-panel')
                 @endif
                 
             </main>

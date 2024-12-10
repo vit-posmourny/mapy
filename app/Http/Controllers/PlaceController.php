@@ -21,6 +21,7 @@ class PlaceController extends Controller
         return to_route('elevation.index');
     }
 
+    
     public function index()
     {
         return view('map');
