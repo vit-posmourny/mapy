@@ -5,6 +5,6 @@
 @layer base {
     :root {
       --dark-wood: 184 143 99;
-      /* ... */
+      --light-wood: 255 252 238;
     }
 }

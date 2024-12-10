@@ -42,19 +42,6 @@
                 
             </main>
         </div>
-        
-        <!-- <script>
-            var elem = document.getElementById('x-nav-link-dashboard');
-            //console.log(elem.getAttribute('active'));
-            var main = document.getElementsByTagName('main')[0];
-            if (elem.getAttribute('active'))
-            {
-                main.innerHTML =`{{$slot}}`;
-            } else {
-                main.innerHTML =`{{$slot}} @include('side-panel')`;
-            }
-        </script> -->
-
     
     </body>
 
