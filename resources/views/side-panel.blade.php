@@ -2,7 +2,7 @@
 
     <div class="grid grid-cols-8 items-baseline align-between gap-4 ooverflow-hidden">
 
-        <span class="select-none">Lat:</span><x-text-input type="text" name="latitude" class="overflow-hidden col-span-7"/>
+        <span class="select-none">Lat:</span><x-text-input type="text" name="latitude" class="col-span-7"/>
         <span class="select-none">Lon:</span><x-text-input type="text" name="longitude" class="col-span-7"/> 
         <span class="select-none">Ele:</span><x-text-input type="text" name="elevation" class="col-span-7"/>
 
