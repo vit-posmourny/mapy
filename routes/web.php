@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/elevation', [MapView::class, 'render'])->middleware(['auth', 'verified'])->name('elevation.render');
+Route::get('/elevation', [PlaceController::class, 'index'])->middleware(['auth', 'verified'])->name('elevation.index');
 Route::post('/elevation/store', [PlaceController::class, 'store'])->middleware(['auth', 'verified'])->name('elevation.store');
 
 Route::middleware('auth')->group(function () {

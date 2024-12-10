@@ -16,6 +16,8 @@
         <!-- Scripts -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Styles -->
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
 
@@ -44,5 +46,5 @@
         </div>
     
     </body>
-
+    @livewireScripts
 </html>

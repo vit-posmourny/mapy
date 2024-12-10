@@ -1,7 +1,7 @@
 <div class="w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
     <form action="/elevation/store" method="POST" class="flex flex-col gap-8">
-
+        @csrf
         <div class="grid grid-cols-8 items-baseline align-between gap-4 ooverflow-hidden">
 
             <span class="select-none">Lat:</span><x-text-input id="i-latitude" type="text" name="latitude" class="col-span-7"/>
