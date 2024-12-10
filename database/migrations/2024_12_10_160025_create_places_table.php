@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nazev_mista', length: 100);
             $table->float('elevation', precision: 6);
-            $table->float('longitude', precision: 10);
-            $table->float('latitude', precision: 10);
+            $table->float('longitude', precision: 17);
+            $table->float('latitude', precision: 17);
             $table->timestamps();
         });
     }

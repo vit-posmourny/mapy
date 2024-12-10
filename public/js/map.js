@@ -50,13 +50,22 @@ map.on('click', function(e) {
   let lat = e.latlng.lat;
   let lon = e.latlng.lng;
 
+  let latitude = document.getElementById('i-latitude');
+  let longitude = document.getElementById('i-longitude');
+  let elevation_elem = document.getElementById('i-elevation');
+
+  latitude.value = lat;
+  longitude.value = lon;
+
+
   // Volání API pro získání výšky
   fetch(`https://api.mapy.cz/v1/elevation?lang=cs&positions=${lon}%2C${lat}&apikey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
           // Získání výšky z odpovědi API
           let elevation = data.items[0].elevation;
-
+          elevation_elem.value = elevation;
+          
           // Vytvoření popup okna s výškou
           L.popup()
               .setLatLng(e.latlng)

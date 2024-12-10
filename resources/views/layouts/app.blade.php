@@ -36,7 +36,7 @@
 
                 {{$slot}}
 
-                @if (request()->path() == 'search')
+                @if (request()->path() == 'elevation')
                     @include('side-panel')
                 @endif
                 

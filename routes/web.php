@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/search', [MapView::class, 'render'])->middleware(['auth', 'verified'])->name('search.index');
+Route::get('/elevation', [MapView::class, 'render'])->middleware(['auth', 'verified'])->name('elevation.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

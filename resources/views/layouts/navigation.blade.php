@@ -18,8 +18,8 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="'search'" :active="request()->routeIs('search.index')">
-                        {{ __('Vyhledávání')}}
+                    <x-nav-link :href="'elevation'" :active="request()->routeIs('elevation.index')">
+                        {{ __('Elevation')}}
                     </x-nav-link>
                 </div>
             </div>

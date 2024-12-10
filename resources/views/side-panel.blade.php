@@ -1,13 +1,17 @@
-<div class="flex flex-col gap-8 w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
+<div class="w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
-    <div class="grid grid-cols-8 items-baseline align-between gap-4 ooverflow-hidden">
+    <form action="" method="GET" class="flex flex-col gap-8">
 
-        <span class="select-none">Lat:</span><x-text-input type="text" name="latitude" class="col-span-7"/>
-        <span class="select-none">Lon:</span><x-text-input type="text" name="longitude" class="col-span-7"/> 
-        <span class="select-none">Ele:</span><x-text-input type="text" name="elevation" class="col-span-7"/>
+        <div class="grid grid-cols-8 items-baseline align-between gap-4 ooverflow-hidden">
 
-    </div>
+            <span class="select-none">Lat:</span><x-text-input id="i-latitude" type="text" name="latitude" disabled class="col-span-7"/>
+            <span class="select-none">Lon:</span><x-text-input id="i-longitude" type="text" name="longitude" disabled class="col-span-7"/> 
+            <span class="select-none col-span-3">Elevation:</span><x-text-input id="i-elevation" type="text" name="elevation" disabled class="col-span-4 text-right"/><span class="select-none col-span-1 text-right">m</span>
+        </div>
 
-        <x-primary-button>Ulozit do databaze</x-primary-butto>
+            <x-primary-button>Store to database</x-primary-button>
+
+    </form>
+
 
 </div>
