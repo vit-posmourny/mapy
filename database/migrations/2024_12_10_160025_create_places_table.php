@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->string('nazev_mista', length: 100);
+            $table->string('place_name', length: 100)->default('unknown');
             $table->float('elevation', precision: 6);
             $table->float('longitude', precision: 17);
             $table->float('latitude', precision: 17);

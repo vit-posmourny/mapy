@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    protected $fillable = ['nazev_mista', 'elevation', 'longitude', 'latitude'];
+    protected $fillable = ['place_name', 'elevation', 'longitude', 'latitude'];
 }
