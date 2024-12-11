@@ -38,9 +38,9 @@
 
                 {{$slot}}
 
-                @if (request()->path() == 'elevation')
+                <!-- @if (request()->path() == 'elevation')
                     @include('side-panel')
-                @endif
+                @endif -->
                 
             </main>
         </div>
