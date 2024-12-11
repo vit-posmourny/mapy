@@ -15,6 +15,6 @@ class SidePanel extends Component
 
     public function render()
     {
-        return view('map');
+        return view('livewire.side-panel');
     }
 }
