@@ -36,11 +36,11 @@
             <!-- Page Content -->
             <main class="flex justify-center">
 
-                {{$slot}}
+                @if (request()->path() == 'elevation')
+                    @include('map')
+                @endif
 
-                <!-- @if (request()->path() == 'elevation')
-                    @include('side-panel')
-                @endif -->
+                {{$slot}}
                 
             </main>
         </div>
