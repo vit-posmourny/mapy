@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\PlaceController;
-use App\Http\Controllers\ProfileController;
+use App\View\MapView;
 use App\Livewire\SidePanel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,7 +15,7 @@ Route::get('/dashboard', function () {return view('dashboard');})->middleware(['
 
 //Route::get('/elevation', [PlaceController::class, 'index'])->middleware(['auth', 'verified'])->name('elevation.index');
 //Route::post('/elevation/store', [PlaceController::class, 'store'])->middleware(['auth', 'verified'])->name('elevation.store');
-Route::get('/elevation', SidePanel::class);
+Route::get('/elevation', [MapView::class, 'Render']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -36,15 +36,17 @@
             <!-- Page Content -->
             <main class="flex justify-center">
 
+                {{$slot}}
+
                 @if (request()->path() == 'elevation')
-                    @include('map')
+                    <!-- embedded Livewire component -->
+                    <livewire:side-panel/>
                 @endif
 
-                {{$slot}}
-                
             </main>
+            
         </div>
     
     </body>
-    @livewireScripts
+        @livewireScripts
 </html>
