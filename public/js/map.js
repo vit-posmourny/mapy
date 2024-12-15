@@ -50,12 +50,12 @@ map.on('click', function(e) {
   let lat = e.latlng.lat;
   let lon = e.latlng.lng;
 
-  let latitude = document.getElementById('i-latitude');
-  let longitude = document.getElementById('i-longitude');
-  let elevation_elem = document.getElementById('i-elevation');
+  var latitude_elem = document.getElementById('latitude');
+  var longitude_elem = document.getElementById('longitude');
+  var elevation_elem = document.getElementById('elevation');
 
-  latitude.value = lat;
-  longitude.value = lon;
+  latitude_elem.value = lat;
+  longitude_elem.value = lon;
 
 
   // Volání API pro získání výšky
