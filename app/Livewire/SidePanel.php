@@ -14,6 +14,18 @@ class SidePanel extends Component
 
     public function store()
     {
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return redirect('/post/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         Place::create([
 
             'latitude' => $this->latitude,
