@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+    <div class="mb-4 text-sm text-gray-600">
         {{ __('Zapomněli jste heslo? Žádný problém. Dejte nám vědět svou e-mailovou adresu a my vám zašleme e-mail s odkazem pro obnovení hesla, který vám umožní vybrat si nové.') }}
     </div>
 

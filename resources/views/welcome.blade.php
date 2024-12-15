@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="flex flex-col h-screen font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="flex flex-col h-screen font-sans antialiased dark:bg-black">
        
         <header class="flex-imitial justify-items-end">
             
