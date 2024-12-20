@@ -1,7 +1,11 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+// LiveWire 3 už přichází s Alpine.js, takže import, který dodává Breeze je zbytečný
+// ve skutečnosti dochází ke konfliktu popsaném na: 
+// https://laraveldaily.com/post/livewire-3-laravel-breeze-error-alpine-js-conflict
 
-window.Alpine = Alpine;
+// import Alpine from 'alpinejs';
 
-Alpine.start();
+// window.Alpine = Alpine;
+
+// Alpine.start();

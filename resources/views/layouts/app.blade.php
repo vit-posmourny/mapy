@@ -43,7 +43,6 @@
                     <!-- embedded Livewire component -->
                     <livewire:side-panel/>
                 @endif
-
             </main>
             
         </div>
