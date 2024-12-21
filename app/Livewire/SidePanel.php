@@ -14,12 +14,26 @@ class SidePanel extends Component
 
     public function store()
     {
-        Place::create([
-
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'elevation' => $this->elevation,
+        $validated = $this->validate([ 
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'elevation' => 'required|numeric',
+        ],[
+            'latitude.numeric' => "Hodnota v poli musí být číselná.",
+            'longitude.numeric' => "Hodnota v poli musí být číselná.",
+            'elevation.numeric' => "Hodnota v poli musí být číselná.",
+            'latitude.required' => "Pole nesmí zůstat prázdně.",
+            'longitude.required' => "Pole nesmí zůstat prázdně.",
+            'elevation.required' => "Pole nesmí zůstat prázdně.",
         ]);
+
+        //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
+        $this->reset();
+
+        Place::create($validated);
+
+        session()->flash('success', 'Hodnoty úspěšně uloženy!');
+
     }
 
 
