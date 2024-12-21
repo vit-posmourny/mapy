@@ -1,4 +1,3 @@
-
 <div class="w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
     <form   wire:submit.prevent="store" class="flex flex-col">
@@ -28,5 +27,5 @@
         @endif
 
     </form>
-    
+   
 </div>
