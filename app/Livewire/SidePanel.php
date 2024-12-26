@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class SidePanel extends Component
 {
-    
     public $latitude;
     public $longitude;
     public $elevation;
@@ -33,9 +32,7 @@ class SidePanel extends Component
         Place::create($validated);
 
         session()->flash('success', 'Hodnoty úspěšně uloženy!');
-
     }
-
 
     public function render()
     {
