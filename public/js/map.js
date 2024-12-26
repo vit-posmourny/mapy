@@ -50,9 +50,9 @@ map.on('click', function(e) {
   let lat = e.latlng.lat;
   let lon = e.latlng.lng;
 
-  var latitude_elem = document.getElementById('latitude');
-  var longitude_elem = document.getElementById('longitude');
-  var elevation_elem = document.getElementById('elevation');
+  var latitude_elem = document.getElementById('inputLatitude');
+  var longitude_elem = document.getElementById('inputLongitude');
+  var elevation_elem = document.getElementById('inputElevation');
 
   latitude_elem.value = lat;
   longitude_elem.value = lon;
