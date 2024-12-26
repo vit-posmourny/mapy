@@ -43,12 +43,15 @@ const LogoControl = L.Control.extend({
 // finally we add our LogoControl to the map
 new LogoControl().addTo(map);
 
-
+document.addEventListener('DOMContentLoaded', function () {
 // Přidání události 'click' na mapu (Zjištění výšky)
 map.on('click', function(e) {
   // Získání souřadnic kliknutí
-  let lat = e.latlng.lat;
+  var lat = e.latlng.lat;
   let lon = e.latlng.lng;
+  console.log('Odesílám hodnotu:', lat);
+  console.log(Livewire);
+  
 
   var latitude_elem = document.getElementById('latitude');
   var longitude_elem = document.getElementById('longitude');
@@ -56,7 +59,7 @@ map.on('click', function(e) {
 
   latitude_elem.value = lat;
   longitude_elem.value = lon;
-
+  
 
   // Volání API pro získání výšky
   fetch(`https://api.mapy.cz/v1/elevation?lang=cs&positions=${lon}%2C${lat}&apikey=${API_KEY}`)
@@ -66,6 +69,15 @@ map.on('click', function(e) {
           let elevation = data.items[0].elevation;
           elevation_elem.value = elevation;
           
+          // Emit the values to Alpine.js
+          window.dispatchEvent(new CustomEvent('latitude-updated', {
+            detail: {
+              latitude: lat,
+              longitude: lon,
+              elevation: elevation
+            }
+          }));
+          
           // Vytvoření popup okna s výškou
           L.popup()
               .setLatLng(e.latlng)
@@ -73,4 +85,6 @@ map.on('click', function(e) {
               .openOn(map);
       })
       .catch(error => console.error('Chyba při volání API: ', error));
+      
+});
 });

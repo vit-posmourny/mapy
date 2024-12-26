@@ -12,6 +12,19 @@ class SidePanel extends Component
     public $elevation = null;
 
 
+    protected $listeners = ['naslouchejLat'];
+
+    public function naslouchejLat($value)
+    {
+        
+        $this->latitude = $value;
+        $this->js("alert('Post saved!')");
+        // return <<<'JS'
+        //     $wire.query = '';
+        // JS;
+    }
+
+
     public function store()
     {
         $validated = $this->validate([ 

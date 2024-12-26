@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
         <!-- Scripts -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> --}}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- livewireStyles -->
         @livewireStyles
@@ -41,7 +42,7 @@
 
                 @if (request()->path() == 'elevation')
                     <!-- embedded Livewire component -->
-                    <livewire:side-panel/>
+                    <livewire:side-panel>
                 @endif
             </main>
             
