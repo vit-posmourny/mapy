@@ -7,9 +7,9 @@ use Livewire\Component;
 class SidePanel extends Component
 {
     
-    public $latitude = null;
-    public $longitude = null;
-    public $elevation = null;
+    public $latitude;
+    public $longitude;
+    public $elevation;
 
 
     public function store()
