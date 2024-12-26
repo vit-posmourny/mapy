@@ -35,14 +35,16 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="flex justify-center">
+            <main class="flex justify-center" x-data="{ latitude: '', longitude: '', elevation: '' }" @latitude-updated.window="latitude = $event.detail.latitude; longitude = $event.detail.longitude; elevation = $event.detail.elevation">
 
                 {{$slot}}
 
-                @if (request()->path() == 'elevation')
+                {{-- @if (request()->path() == 'elevation') --}}
                     <!-- embedded Livewire component -->
-                    <livewire:side-panel/>
-                @endif
+                    
+                    <livewire:side-panel :latitude="latitude" :longitude="longitude" :elevation="elevation"/>
+                    
+                {{-- @endif --}}
             </main>
             
         </div>
