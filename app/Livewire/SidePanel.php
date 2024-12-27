@@ -6,13 +6,26 @@ use Livewire\Component;
 
 class SidePanel extends Component
 {
-    public $latitude;
-    public $longitude;
-    public $elevation;
+    public $latitude = null;
+    public $longitude = null;
+    public $elevation = null;
 
+    protected $listeners = [
+        'latitude-updated' => 'handleUserUpdate',
+    ];
+
+    public function handleUserUpdate($latitude, $longitude, $elevation)
+    {
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+        $this->elevation = $elevation;
+    }   
+   
 
     public function store()
     {
+        dd($this->latitude, $this->longitude, $this->elevation);
+
         $validated = $this->validate([ 
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
