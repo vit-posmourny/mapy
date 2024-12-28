@@ -16,6 +16,7 @@ class SidePanel extends Component
 
     public function handleUserUpdate($latitude, $longitude, $elevation)
     {
+        dd($latitude, $longitude, $elevation);
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->elevation = $elevation;
@@ -24,7 +25,7 @@ class SidePanel extends Component
 
     public function store()
     {
-        dd($this->latitude, $this->longitude, $this->elevation);
+        dd('jsem v store');
 
         $validated = $this->validate([ 
             'latitude' => 'required|numeric',

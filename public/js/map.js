@@ -47,7 +47,6 @@ new LogoControl().addTo(map);
 // Přidání události 'click' na mapu (Zjištění výšky)
 map.on('click', function(e) {
 
- 
   // Získání souřadnic kliknutí
   let lat = e.latlng.lat;
   let lon = e.latlng.lng;
@@ -55,12 +54,9 @@ map.on('click', function(e) {
   var latitude_elem = document.getElementById('inputLatitude');
   var longitude_elem = document.getElementById('inputLongitude');
   var elevation_elem = document.getElementById('inputElevation');
-  var span = document.getElementById('i-span');
 
   latitude_elem.value = lat;
   longitude_elem.value = lon;
-
-  var elevation;
 
   // Volání API pro získání výšky
   fetch(`https://api.mapy.cz/v1/elevation?lang=cs&positions=${lon}%2C${lat}&apikey=${API_KEY}`)
@@ -68,7 +64,7 @@ map.on('click', function(e) {
       .then(data => {
           // Získání výšky z odpovědi API
           elevation = data.items[0].elevation;
-          
+          elevation_elem.value = elevation;
           // Vytvoření popup okna s výškou
           L.popup()
           .setLatLng(e.latlng)
@@ -77,8 +73,11 @@ map.on('click', function(e) {
         })
   .catch(error => console.error('Chyba při volání API: ', error));
   
-  elevation_elem.value = elevation;
-  span.dispatchEvent(new Event('latitude-updated'));
-      
-      
+  window.dispatchEvent(new CustomEvent('latitude-updated', {
+    detail: {
+      latitude: latitude_elem.value,
+      longitude: longitude_elem.value,
+      elevation: elevation_elem.value,
+    }
+  }));
 });
