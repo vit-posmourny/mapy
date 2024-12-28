@@ -11,12 +11,12 @@ class SidePanel extends Component
     public $elevation = null;
 
     protected $listeners = [
-        'latitude-updated' => 'handleUserUpdate',
+        'values-updated' => 'handleUserUpdate',
     ];
+
 
     public function handleUserUpdate($latitude, $longitude, $elevation)
     {
-        dd($latitude, $longitude, $elevation);
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->elevation = $elevation;
@@ -25,7 +25,7 @@ class SidePanel extends Component
 
     public function store()
     {
-        dd('jsem v store');
+        //dd('jsem v store');
 
         $validated = $this->validate([ 
             'latitude' => 'required|numeric',

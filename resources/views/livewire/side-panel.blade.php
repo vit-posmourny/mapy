@@ -1,8 +1,5 @@
 <div class="w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
-    
-    <script src="js/map.js"></script>
-
     <form  wire:submit.prevent="store" class="flex flex-col">
         
         <div class="grid grid-cols-12 items-baseline mb-4">
