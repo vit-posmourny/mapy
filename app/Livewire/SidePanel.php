@@ -25,8 +25,6 @@ class SidePanel extends Component
 
     public function store()
     {
-        //dd('jsem v store');
-
         $validated = $this->validate([ 
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
@@ -45,7 +43,7 @@ class SidePanel extends Component
 
         Place::create($validated);
 
-        session()->flash('success', 'Hodnoty úspěšně uloženy!');
+        session()->flash('success', 'true');
     }
 
     public function render()

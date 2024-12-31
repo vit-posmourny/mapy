@@ -3,7 +3,7 @@
     <form wire:submit.prevent="store" class="flex flex-col">
         
         <div class="grid grid-cols-12 items-baseline mb-4">
-            <span class="select-none col-span-2">Lat:</span><x-text-input id="inputLatitude" wire:model="latitude"  name="latitude" placeholder="Enter Latitude" class="col-span-10"/>
+            <span class="select-none col-span-2">Lat:</span><x-text-input id="inputLatitude" wire:model="latitude" name="latitude" placeholder="Enter Latitude" class="col-span-10"/>
         </div>
         
             <x-input-error class="self-start ml-14" :messages="$errors->get('latitude')"/>
@@ -20,13 +20,7 @@
 
             <x-input-error class="self-start ml-14" :messages="$errors->get('elevation')"/>
         
-        <x-primary-button class="mt-4">Store to database<img class="w-8 h-8 animate-spin" src="images\loading spinner.svg"></x-primary-button> <br>
-            
-            
-
-        @if (session()->has('success'))
-            <div class='self-center text-lg text-green-600 space-y-1'>{{ session('success') }}</div>
-        @endif
+            <x-submit-button class="mt-4">Store to database</x-submit-button>
 
     </form>
    
