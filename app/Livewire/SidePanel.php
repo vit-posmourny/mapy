@@ -26,9 +26,10 @@ class SidePanel extends Component
     public function store()
     {
         $validated = $this->validate([ 
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-            'elevation' => 'required|numeric',
+            
+            'latitude' => 'required|numeric|max:360',
+            'longitude' => 'required|numeric|max:360',
+            'elevation' => 'required|numeric|max:9999',
         ],[
             'latitude.numeric' => "Hodnota v poli musí být číselná.",
             'longitude.numeric' => "Hodnota v poli musí být číselná.",
