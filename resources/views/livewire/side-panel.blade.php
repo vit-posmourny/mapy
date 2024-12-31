@@ -21,10 +21,6 @@
             <x-input-error class="self-start ml-14" :messages="$errors->get('elevation')"/>
         
             <x-submit-button class="mt-4">Store to database</x-submit-button>
-            
-        @if (session()->has('success'))
-            <div class='self-center text-lg text-green-600 space-y-1'>{{ session('success') }}</div>
-        @endif
 
     </form>
    

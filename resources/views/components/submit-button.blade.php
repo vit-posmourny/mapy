@@ -2,8 +2,16 @@
     
     <div class="flex inline-flex">
 
-        <span> {{ $slot }} </span> <img class="w-8 h-8 absolute right-12 animate-spin" wire:loading.delay.short src="images\loading spinner.svg"> 
+        <span> {{ $slot }} </span>  
+
+        @if (session()->has('success'))
+            <img class="w-8 h-8 absolute right-12 animate-[ping_1s_ease-in-out_1]" src="images\checkmark-svgrepo-com.svg">
+        @else
+            <img class="w-8 h-8 absolute right-12 animate-spin" wire:loading.delay src="images\loading spinner.svg">
+        @endif
 
     </div>
 
 </button>
+
+
