@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->string('place_name', length: 100)->default('unknown');
-            $table->float('latitude', precision: 6);
-            $table->float('longitude', precision: 17);
-            $table->float('elevation', precision: 17);
+            $table->decimal('latitude', total: 18, places: 15);
+            $table->decimal('longitude', total: 18, places: 15);
+            $table->float('elevation');
             $table->timestamps();
         });
     }
