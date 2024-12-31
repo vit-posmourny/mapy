@@ -20,9 +20,9 @@
 
             <x-input-error class="self-start ml-14" :messages="$errors->get('elevation')"/>
         
-        <x-primary-button class="mt-4">Store to database</x-primary-button> <br>
+        <x-primary-button class="mt-4">Store to database<img class="w-8 h-8 animate-spin" src="images\loading spinner.svg"></x-primary-button> <br>
             
-            <svg class="bg-green-600 w-6 h-6 animate-spin" src="images\loading spinner.svg"></svg>
+            
 
         @if (session()->has('success'))
             <div class='self-center text-lg text-green-600 space-y-1'>{{ session('success') }}</div>
