@@ -4,7 +4,7 @@ namespace App\Livewire;
 use App\Models\Place;
 use Livewire\Component;
 
-class SidePanel extends Component
+class ElevationPanel extends Component
 {
     public $latitude = null;
     public $longitude = null;
@@ -49,6 +49,6 @@ class SidePanel extends Component
 
     public function render()
     {
-        return view('livewire.side-panel');
+        return view('livewire.elevation-panel');
     }
 }
