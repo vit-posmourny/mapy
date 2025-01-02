@@ -41,7 +41,7 @@
 
                 @if (request()->path() == 'elevation')
                     <!-- embedded Livewire component -->
-                    <livewire:side-panel/>
+                    <livewire:elevation-panel/>
                 @endif
 
             </main>
