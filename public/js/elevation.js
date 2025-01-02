@@ -1,5 +1,5 @@
 // replace with your own API key
-const API_KEY = 'ZKBUR07BFrPvZSJKn3JnO8eL-g7FqYN9Ufcp4QHwnxo';
+const API_KEY = 'const API_KEY = window.MAPY_API_KEY;';
 
 /*
 We create the map and set its initial coordinates and zoom.
@@ -67,16 +67,16 @@ map.on('click', function(e) {
             elevation_elem.value = elevation;
             // Vytvoření popup okna s výškou
             L.popup()
-              .setLatLng(e.latlng)
-              .setContent(`Výška: ${elevation} metrů`)
-              .openOn(map)
+                .setLatLng(e.latlng)
+                .setContent(`Výška: ${elevation} metrů`)
+                .openOn(map)
             // Odeslání události s novými souřadnicemi
             window.dispatchEvent(new CustomEvent('values-updated', {
-              detail: {
-                latitude: latitude_elem.value,
-                longitude: longitude_elem.value,
-                elevation: elevation_elem.value,
-              }
+                detail: {
+                    latitude: latitude_elem.value,
+                    longitude: longitude_elem.value,
+                    elevation: elevation_elem.value,
+                }
             }));
         })
     .catch(error => console.error('Chyba při volání API: ', error));
