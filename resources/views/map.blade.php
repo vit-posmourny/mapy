@@ -1,6 +1,15 @@
 <x-app-layout>
 
-    <div id="map" class="w-3/4 h-[10vh] bg-purple-200"></div>
-    <script src="js/elevation.js"></script>
+    <div id="map" class="w-3/4 h-[10vh] cursor-default"></div>
 
+    @if (request()->path() == 'elevation')
+
+        <script src="js/elevation.js"></script>
+
+    @elseif (request()->path() == 'rgeocode')
+
+        <script src="js/rgeocode.js"></script> 
+
+    @endif
+    
 </x-app-layout>

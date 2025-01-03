@@ -40,8 +40,13 @@
                 {{$slot}}
 
                 @if (request()->path() == 'elevation')
-                    <!-- embedded Livewire component -->
+
                     <livewire:elevation-panel/>
+
+                @elseif (request()->path() == 'rgeocode')
+
+                    <livewire:rgeocode-panel/>
+
                 @endif
 
             </main>
