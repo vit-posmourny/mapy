@@ -21,6 +21,11 @@
                     <x-nav-link :href="'elevation'" :active="request()->routeIs('elevation')">
                         {{ __('Elevation')}}
                     </x-nav-link>
+
+                    <x-nav-link :href="'rgeocode'" :active="request()->routeIs('rgeocode')">
+                        {{ __('RGeocoding')}}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 
