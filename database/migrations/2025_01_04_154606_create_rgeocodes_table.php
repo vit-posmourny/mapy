@@ -22,10 +22,11 @@ return new class extends Migration
             $table->decimal('longitude', total: 18, places: 15);
             $table->tinyText('regional_address');
             $table->tinyText('regional_street');
-            $table->tinyText('regional_municipality_part');
+            $table->tinyText('regional_municipality_part_1');
+            $table->tinyText('regional_municipality_part_2');
             $table->tinyText('regional_municipality');
-            $table->tinyText('regional_region_4');
-            $table->tinyText('regional_region_5');
+            $table->tinyText('regional_region_1');
+            $table->tinyText('regional_region_2');
             $table->tinyText('regional_country');
             $table->tinyText('isoCode');
             $table->string('zip', 6)->default('n/a');

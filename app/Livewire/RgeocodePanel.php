@@ -10,6 +10,10 @@ class RgeocodePanel extends Component
     public $label = null;
     public $location = null;
     public $name = null;
+    public $name = null;
+    public $name = null;
+    public $name = null;
+    public $name = null;
     public $zip = null;
 
     public function store()

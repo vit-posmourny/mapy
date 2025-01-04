@@ -52,6 +52,11 @@ map.on('click', async function mapClick(e) {
     let lat = e.latlng.lat;
     let lon = e.latlng.lng;
 
+	let lat_elem = document.getElementById('i-label');
+	let loc_elem = document.getElementById('i-location');
+	let name_elem = document.getElementById('i-name');
+	let zip_elem = document.getElementById('i-zip');
+
 	try {
 		const response = await fetch(`https://api.mapy.cz/v1/rgeocode/?lon=${lon}&lat=${lat}&apikey=${API_KEY}`, {
 			mode: 'cors',
@@ -61,7 +66,18 @@ map.on('click', async function mapClick(e) {
 		if (json?.items?.length > 0) {
 			html = '<p>Response details are available in the console.</p><ul>';
 			json.items.forEach(item => {
+				html += `<li>${item.label}</li>`;
+				html += `<li>${item.location}</li>`;
 				html += `<li>${item.name}</li>`;
+				html += `<li>${item.position.lat}</li>`;
+				html += `<li>${item.position.lon}</li>`;
+				item.regionalStructure.forEach(index => {
+					html += `<li>${index.name}</li>`;
+					html += `<li>${index.type}</li>`;
+					if (index.type == 'regional.country'){
+						html += `<li>${index.isoCode}</li>`;
+					}
+				})
 			});
 			html += '</ul>';
 
