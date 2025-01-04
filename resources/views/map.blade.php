@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div id="map" class="w-3/4 h-[10vh] cursor-default"></div>
+    <div id="map" class="w-3/4 h-[10vh] cursor-default z-0"></div>
 
     @if (request()->path() == 'elevation')
 
