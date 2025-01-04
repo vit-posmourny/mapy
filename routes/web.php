@@ -3,7 +3,6 @@
 use App\View\MapView;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\RgeocodePanel;
 
 Route::get('/', function () { return view('welcome');});
 
