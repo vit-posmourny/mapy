@@ -30,7 +30,8 @@ class ElevationPanel extends Component
             'latitude' => 'required|numeric|max:360',
             'longitude' => 'required|numeric|max:360',
             'elevation' => 'required|numeric|max:9999',
-        ],[
+        ],[ // pomocí příkazu php artisan vendor:publish --tag=lang
+            // mohu vytáhnout texty s eng a lokalizovat si je do cs
             'latitude.numeric' => "Hodnota v poli musí být číselná.",
             'longitude.numeric' => "Hodnota v poli musí být číselná.",
             'elevation.numeric' => "Hodnota v poli musí být číselná.",
