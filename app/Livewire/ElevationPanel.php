@@ -1,8 +1,8 @@
 <?php
 namespace App\Livewire;
 
-use App\Models\Place;
 use Livewire\Component;
+use App\Models\Elevation;
 
 class ElevationPanel extends Component
 {
@@ -43,7 +43,7 @@ class ElevationPanel extends Component
         //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
         $this->reset();
 
-        Place::create($validated);
+        Elevation::create($validated);
 
         session()->flash('success', 'true');
     }
