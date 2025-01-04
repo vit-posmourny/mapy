@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Rgeocode;
 use Livewire\Component;
 
 class RgeocodePanel extends Component
@@ -31,7 +32,7 @@ class RgeocodePanel extends Component
         //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
         $this->reset();
 
-        Place::create($validated);
+        Rgeocode::create($validated);
 
         session()->flash('success', 'true');
     }
