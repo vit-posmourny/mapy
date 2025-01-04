@@ -10,6 +10,7 @@ class ElevationPanel extends Component
     public $longitude = null;
     public $elevation = null;
 
+    
     protected $listeners = [
         'values-updated' => 'handleUserUpdate',
     ];

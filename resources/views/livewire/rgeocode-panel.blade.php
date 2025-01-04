@@ -24,7 +24,7 @@
             <span class="select-none col-span-2">PSČ:</span><x-text-input id="i-zip" wire:model="zip" name="zip" placeholder="PSČ" class="col-span-10"/>
         </div>
 
-            <x-input-error class="self-start ml-14" :messages="$errors->get('name')"/>
+            <x-input-error class="self-start ml-14" :messages="$errors->get('zip')"/>
         
         <x-submit-button class="mt-4">Store to database</x-submit-button>
 
