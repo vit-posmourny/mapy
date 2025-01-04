@@ -51,12 +51,12 @@ map.on('click', function(e) {
     let lat = e.latlng.lat;
     let lon = e.latlng.lng;
 
-    let latitude_elem = document.getElementById('inputLatitude');
-    let longitude_elem = document.getElementById('inputLongitude');
-    let elevation_elem = document.getElementById('inputElevation');
+    let lat_elem = document.getElementById('i-Latitude');
+    let lon_elem = document.getElementById('i-Longitude');
+    let ele_elem = document.getElementById('i-Elevation');
 
-    latitude_elem.value = lat;
-    longitude_elem.value = lon;
+    lat_elem.value = lat;
+    lon_elem.value = lon;
 
     // Volání API pro získání výšky
     fetch(`https://api.mapy.cz/v1/elevation?lang=cs&positions=${lon}%2C${lat}&apikey=${API_KEY}`)
@@ -64,7 +64,7 @@ map.on('click', function(e) {
         .then(data => {
             // Získání výšky z odpovědi API
             elevation = data.items[0].elevation;
-            elevation_elem.value = elevation;
+            ele_elem.value = elevation;
             // Vytvoření popup okna s výškou
             L.popup()
                 .setLatLng(e.latlng)
@@ -73,9 +73,9 @@ map.on('click', function(e) {
             // Odeslání události s novými souřadnicemi
             window.dispatchEvent(new CustomEvent('values-updated', {
                 detail: {
-                    latitude: latitude_elem.value,
-                    longitude: longitude_elem.value,
-                    elevation: elevation_elem.value,
+                    latitude: lat_elem.value,
+                    longitude: lon_elem.value,
+                    elevation: ele_elem.value,
                 }
             }));
         })
