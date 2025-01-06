@@ -96,7 +96,7 @@ return [
         'array' => 'The :attribute field must not have more than :max items.',
         'file' => 'The :attribute field must not be greater than :max kilobytes.',
         'numeric' => ':attribute nesmí přesáhnout :max.',
-        'string' => 'The :attribute field must not be greater than :max characters.',
+        'string' => 'Pole :attribute, nesmí mít více než :max znaků.',
     ],
     'max_digits' => 'The :attribute field must not have more than :max digits.',
     'mimes' => 'The :attribute field must be a file of type: :values.',
