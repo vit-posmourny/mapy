@@ -18,14 +18,18 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="'elevation'" :active="request()->routeIs('elevation')">
+                    <x-nav-link :href="route('elevation')" :active="request()->routeIs('elevation')">
                         {{ __('Elevation')}}
                     </x-nav-link>
 
-                    <x-nav-link :href="'rgeocode'" :active="request()->routeIs('rgeocode')">
-                        {{ __('RGeocoding')}}
+                    <x-nav-link :href="route('rgeocode')" :active="request()->routeIs('rgeocode')">
+                        {{ __('Rgeocoding')}}
                     </x-nav-link>
                     
+                    <x-nav-link :href="route('geocode')" :active="request()->routeIs('geocode')">
+                        {{ __('Geocoding')}}
+                    </x-nav-link>
+
                 </div>
             </div>
 
