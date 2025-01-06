@@ -69,6 +69,8 @@ class RgeocodePanel extends Component
             'regional_country' => 'string|max:255',
             'isoCode' => 'string|max:255',
             'zip' => 'string|max:6',
+        ],[
+            'zip' => 'Pole PSČ, nesmí mít více než 6 znaků.'
         ]);
 
         //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null

@@ -2,7 +2,7 @@
 
     <div id="map" class="w-3/4 h-[70vh] cursor-default z-0"></div>
 
-    {{-- @if (request()->path() == 'elevation')
+    @if (request()->path() == 'elevation')
 
         <script src="js/elevation.js"></script>
 
@@ -10,6 +10,6 @@
 
         <script src="js/rgeocode.js"></script> 
 
-    @endif --}}
+    @endif
     
 </x-app-layout>
