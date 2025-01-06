@@ -47,6 +47,10 @@
 
                     <livewire:rgeocode-panel/>
 
+                @elseif (request()->path() == 'geocode')
+                
+                    <livewire:geocode-panel/>
+
                 @endif
 
             </main>
