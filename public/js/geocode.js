@@ -1,47 +1,81 @@
 // replace with your own API key
 const API_KEY = 'ZKBUR07BFrPvZSJKn3JnO8eL-g7FqYN9Ufcp4QHwnxo';
 
+const form = document.getElementById('i-geo-form');
+const input = document.getElementById('i-search-field');
 /*
-We create the map and set its initial coordinates and zoom.
-See https://leafletjs.com/reference.html#map
+We create a map with initial coordinates zoom, a raster tile source and a layer using that source.
+See https://maplibre.org/maplibre-gl-js-docs/example/map-tiles/
+See https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/#raster
+See https://maplibre.org/maplibre-gl-js-docs/style-spec/layers/
 */
-const map = L.map('map').setView([50.0843453, 14.4792458], 12);
-/*
-Then we add a raster tile layer with REST API Mapy.cz tiles
-See https://leafletjs.com/reference.html#tilelayer
-*/
-L.tileLayer(`https://api.mapy.cz/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`, {
-    minZoom: 0,
-    maxZoom: 19,
-    attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
-}).addTo(map);
+const map = new maplibregl.Map({
+	container: 'map',
+	center: [14.49028015136719, 50.07524023973632],
+	zoom: 12,
+	style: {
+		version: 8,
+		sources: {
+			'basic-tiles': {
+				type: 'raster',
+				url: `https://api.mapy.cz/v1/maptiles/basic/tiles.json?apikey=${API_KEY}`,
+				tileSize: 256,
+			},
+      'markers': {
+				type: 'geojson',
+				data: {
+					type: 'FeatureCollection',
+					features: [],
+				},
+				generateId: true,
+			},
+		},
+		layers: [
+    	{
+        id: 'tiles',
+        type: 'raster',
+        source: 'basic-tiles',
+      },
+      {
+      	id: 'markers',
+        type: 'symbol',
+        source: 'markers',
+        layout: {
+          'icon-image': 'marker-icon',
+          'icon-size': window.devicePixelRatio > 1 ? 0.5 : 1,
+          'icon-allow-overlap': true,
+        },
+        paint: {},
+        filter: ['==', '$type', 'Point'],
+      },
+    ],
+	},
+});
 
 /*
 We also require you to include our logo somewhere over the map.
 We create our own map control implementing a documented interface,
 that shows a clickable logo.
-See https://leafletjs.com/reference.html#control
+See https://maplibre.org/maplibre-gl-js-docs/api/markers/#icontrol
 */
-const LogoControl = L.Control.extend({
-    options: {
-        position: 'bottomleft',
-    },
+class LogoControl {
+	onAdd(map) {
+		this._map = map;
+		this._container = document.createElement('div');
+		this._container.className = 'maplibregl-ctrl';
+		this._container.innerHTML = '<a href="http://mapy.cz/" target="_blank"><img  width="100px" src="https://api.mapy.cz/img/api/logo.svg" ></a>';
 
-    onAdd: function (map) {
-        const container = L.DomUtil.create('div');
-        const link = L.DomUtil.create('a', '', container);
-
-        link.setAttribute('href', 'http://mapy.cz/');
-        link.setAttribute('target', '_blank');
-        link.innerHTML = '<img src="https://api.mapy.cz/img/api/logo.svg" />';
-        L.DomEvent.disableClickPropagation(link);
-
-        return container;
-    },
-});
+		return this._container;
+	}
+ 
+	onRemove() {
+		this._container.parentNode.removeChild(this._container);
+		this._map = undefined;
+	}
+}
 
 // finally we add our LogoControl to the map
-new LogoControl().addTo(map);
+map.addControl(new LogoControl(), 'bottom-left');
 
 // function for calculating a bbox from an array of coordinates
 function bbox(coords) {
@@ -122,13 +156,12 @@ async function geocode(query) {
   }
 }
 
-const form = document.querySelector('#geocode-form');
-const input = document.querySelector('#geocode-input');
 
 form.addEventListener('submit', function(event) {
 	event.preventDefault();
   geocode(input.value);
 }, false);
+
 
 map.on('load', function () {
 	map.loadImage(
