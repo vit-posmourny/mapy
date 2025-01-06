@@ -10,6 +10,10 @@
 
         <script src="js/rgeocode.js"></script> 
 
+    @elseif (request()->path() == 'geocode')
+    
+        <script src="js/geocode.js"></script>
+
     @endif
     
 </x-app-layout>
