@@ -3,8 +3,10 @@
     <form id="i-geo-form" class="flex flex-col">
 
         <div class="grid grid-cols-12 items-baseline mb-4">
-            <span class="select-none col-span-3">něco:</span><x-text-input id="i-search-field" name="search-field" placeholder="něco" class="col-span-9"/>
+            <span class="select-none col-span-3">něco:</span><x-text-input id="" name="search-field" placeholder="něco" class="col-span-9"/>
         </div>
+
+        <input id="i-search-field" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
 
         <x-submit-button class="mt-4">Hledej</x-submit-button>
         
