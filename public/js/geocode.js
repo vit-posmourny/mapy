@@ -74,6 +74,13 @@ const map = new maplibregl.Map(
 // finally we add our LogoControl to the map
 map.addControl(new LogoControl(), 'bottom-left');
 
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  geocode(input.value);
+}, false);
+
+
 // function for calculating a bbox from an array of coordinates
 function bbox(coords) {
 
@@ -130,10 +137,20 @@ async function geocode(query)
                 .addTo(map);
         });
         
+        // jestliže bude marker/hit pouze jeden nastaví správně boundingbox
+        var coordArr = [];
+
+        if (json.items.length == 1)
+        {
+            coordArr = json.items[0].bbox;            
+        }else {
+            coordArr = bbox(json.items.map(item => ([item.position.lon, item.position.lat])))
+        }
+        
         // finally we set the map to show the whole geometry in the viewport
         map.jumpTo(
             map.cameraForBounds(
-                bbox(json.items.map(item => ([item.position.lon, item.position.lat]))),
+                coordArr,
                 {
                   padding: 40,
                 }
@@ -144,8 +161,3 @@ async function geocode(query)
       console.log(ex);
     }
 }
-
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    geocode(input.value);
-}, false);
