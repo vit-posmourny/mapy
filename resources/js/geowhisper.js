@@ -36,7 +36,7 @@ const getItems = async(query) => {
 
 const autoCompleteJS = new autoComplete({
     selector: () => input,
-    placeHolder: "Zadejte hledanou adresu...",
+    // placeHolder: "Zadejte hledanou adresu...",
     searchEngine: (query, record) => `<mark>${record}</mark>`,
     data: {
         keys: ["value"],
@@ -51,7 +51,6 @@ const autoCompleteJS = new autoComplete({
             if (queryCache[input.value]) {
                 return queryCache[input.value];
             }
-            
             return items;
         },
         cache: false,
@@ -63,9 +62,7 @@ const autoCompleteJS = new autoComplete({
         
             desc.style = "overflow: hidden; white-space: nowrap; text-overflow: ellipsis;";
             desc.innerHTML = `${itemData.label}, ${itemData.location}`;
-            item.append(
-                desc,
-            );
+            item.append(desc,);
         },
         highlight: true
     },
