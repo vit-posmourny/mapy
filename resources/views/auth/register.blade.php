@@ -30,7 +30,7 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4 mb-8">
             <x-input-label for="password_confirmation" :value="__('Potvrdit heslo')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
@@ -45,7 +45,7 @@
                 {{ __('Už jste registrovaní?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-4 mr-4">
                 {{ __('Registrovat') }}
             </x-primary-button>
         </div>
