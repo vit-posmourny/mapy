@@ -18,7 +18,8 @@
         <!-- Scripts -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
         <script src="https://unpkg.com/maplibre-gl@^5.0.0/dist/maplibre-gl.js"></script>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/autoComplete.css'])
         <!-- livewireStyles -->
         @livewireStyles
     </head>
@@ -44,17 +45,17 @@
                 @if (request()->path() == 'elevation')
 
                     <livewire:elevation-panel/>
-                    <script src="js/elevation.js"></script>
+                    <script src="{{ Vite::asset('resources/js/elevation.js') }}"></script>
 
                 @elseif (request()->path() == 'rgeocode')
 
                     <livewire:rgeocode-panel/>
-                    <script src="js/rgeocode.js"></script> 
+                    <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script> 
 
                 @elseif (request()->path() == 'geocode')
                 
                     <livewire:geocode-panel/>
-                    <script src="js/geocode.js"></script>
+                    <script src="{{ Vite::asset('resources/js/geowhisper.js') }}"></script>
 
                 @endif
 
