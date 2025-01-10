@@ -50,4 +50,5 @@
         </main>
 
     </body>
+        @livewireScripts
 </html>
