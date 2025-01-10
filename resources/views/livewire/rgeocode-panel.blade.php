@@ -26,7 +26,7 @@
 
             <x-input-error class="self-start ml-14" :messages="$errors->get('zip')"/>
         
-        <x-submit-button class="mt-4">Uložit do databáze</x-submit-button>
+            <x-submit-button class="mt-4">Uložit do databáze</x-submit-button>
 
     </form>
    

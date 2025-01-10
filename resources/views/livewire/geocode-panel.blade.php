@@ -2,16 +2,13 @@
 
     <form id="i-geo-form" class="flex flex-col">
 
-        <div class="flex justify-between items-baseline mb-14">
+        <div class="flex justify-between items-baseline mb-4">
             
-            <x-input-whisper id="i-search-field" name="search-field"/>
-
-            {{-- <span class="select-none mr-4">něco:</span><input id="i-search-field" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"> --}}
+            <x-input-whisper id="i-search-field" name="search-field" placeholder="Vložte adresu ..." class="text-center"/>
             
         </div>
         
-        
-        <x-submit-button class="mt-4">Hledej</x-submit-button>
+            <x-submit-button class="mt-4">Hledej</x-submit-button>
         
     </form>
    

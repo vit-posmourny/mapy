@@ -1,19 +1,17 @@
 .autoComplete_wrapper {
   display: flex;
-  position: absolute;
-  width: 416px;
-  min-width: 214px;
-
+  position: relative;
+  min-width: 214px; /* divný, ale když není, tak začne přesahovat */
 }
 
 .autoComplete_wrapper > input {
   width: 416px;
 }
 
-.autoComplete_wrapper > input::placeholder {
+/* .autoComplete_wrapper > input::placeholder {
   color: rgba(123, 123, 123, 0.5);
   transition: all 0.3s ease;
-}
+} */
 
 .autoComplete_wrapper > ul {
   position: absolute;
@@ -29,6 +27,8 @@
   border: 1px solid rgba(33, 33, 33, 0.1);
   z-index: 1000;
   outline: none;
+  border-radius: 0.5rem;
+  filter: drop-shadow(2px 10px 5px rgba(0, 0, 0, 0.3));
 }
 
 .autoComplete_wrapper > ul > li {
@@ -58,7 +58,7 @@
 
 .autoComplete_wrapper > ul > li mark {
   background-color: transparent;
-  color: rgba(255, 122, 122, 1);
+  color: #16a34a;
   font-weight: bold;
 }
 
