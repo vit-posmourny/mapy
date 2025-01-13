@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('label')->default('');
             $table->string('location')->default('');
             $table->string('name')->default('');
+            $table->foreignId('user_id')->nullable();
             $table->decimal('latitude', total: 18, places: 15)->nullable();
             $table->decimal('longitude', total: 18, places: 15)->nullable();
             $table->string('regional_address')->default('');

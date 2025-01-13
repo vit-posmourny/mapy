@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('latitude', total: 18, places: 15);
             $table->decimal('longitude', total: 18, places: 15);
             $table->float('elevation');
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }
