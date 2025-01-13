@@ -1,8 +1,11 @@
 <?php
 namespace App\Livewire;
 
+
 use Livewire\Component;
 use App\Models\Elevation;
+use Illuminate\Support\Facades\Auth;
+
 
 class ElevationPanel extends Component
 {
@@ -41,6 +44,8 @@ class ElevationPanel extends Component
             'elevation.required' => "Pole nesmí zůstat prázdně.",
         ]);
 
+        $validated += ['user_id' => auth()->id()];
+
         //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
         $this->reset();
 
@@ -48,6 +53,7 @@ class ElevationPanel extends Component
 
         session()->flash('success', 'true');
     }
+
 
     public function render()
     {

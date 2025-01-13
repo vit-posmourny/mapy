@@ -76,6 +76,8 @@ class RgeocodePanel extends Component
         //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
         $this->reset();
 
+        $validated += ['user_id' => auth()->id()];
+
         Rgeocode::create($validated);
 
         session()->flash('success', 'true');
