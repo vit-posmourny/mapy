@@ -20,7 +20,6 @@
 
                 <div class="size-1/2 mt-8">
                     <a href="/">
-                        {{-- <img src="images/vecteezy_africa-safari-map-1000x785.png"/> --}}
                         <img src='images/vecteezy_africa-safari-map-1000x785.png'>
                     </a>   
                 </div>
