@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Rgeocode;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class RgeocodePanel extends Component
 {
+
     public $label = '';
     public $location = '';
     public $name = '';
@@ -23,15 +25,17 @@ class RgeocodePanel extends Component
     public $isoCode = '';
     public $zip = '';
 
+    public $data = [];
+
 
     protected $listeners = [
         'values-updated' => 'handleUserUpdate',
     ];
 
 
-    public function handleUserUpdate($label, $location, $name, $lat, $lon, $regional_address, 
+    public function handleUserUpdate( $label, $location, $name, $lat, $lon, $regional_address, 
         $regional_street, $regional_municipality_part_1, $regional_municipality_part_2, 
-        $regional_municipality, $regional_region_1, $regional_region_2, $regional_country, $isoCode, $zip)
+        $regional_municipality, $regional_region_1, $regional_region_2, $regional_country, $isoCode, $zip )
     {
         $this->latitude = $lat;
         $this->longitude = $lon;
@@ -49,6 +53,7 @@ class RgeocodePanel extends Component
         $this->name = $name;
         $this->zip = $zip;
     }   
+    
 
     public function store()
     {
@@ -73,7 +78,7 @@ class RgeocodePanel extends Component
             'zip' => 'Pole PSČ, nesmí mít více než 6 znaků.'
         ]);
 
-        //znovu nastaví hodnoty všech props.komponenty do init.stavu tj.null
+        //znovu nastaví hodnoty všech props.komponenty do init.stavu
         $this->reset();
 
         $validated += ['user_id' => auth()->id()];
@@ -82,6 +87,28 @@ class RgeocodePanel extends Component
 
         session()->flash('success', 'true');
     }
+
+
+    public function readData()
+    {
+        $this->reset('data');
+
+        $records = DB::select('select * from rgeocodes where user_id = ?', [auth()->id()]);
+
+        foreach ($records as $record) {
+
+            $this->data[] = [
+                'label' => $record->label,
+                'location' => $record->location,
+                'name' => $record->name,
+                'zip' => $record->zip,
+                'isoCode' => $record->isoCode,
+                'latitude' => $record->latitude,
+                'longitude' => $record->longitude,
+            ];
+        }
+    }
+
 
     public function render()
     {
