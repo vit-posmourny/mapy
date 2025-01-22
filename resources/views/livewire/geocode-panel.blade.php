@@ -1,5 +1,12 @@
 <div class="w-1/4 h-100 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
+    <style>
+        .maplibregl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+    </style>
+
     <form id="i-geo-form" class="flex flex-col">
 
         <div class="flex justify-between items-baseline mb-4">

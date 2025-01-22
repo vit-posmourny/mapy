@@ -1,5 +1,7 @@
 ///////////////////////////////////////////////////// WHISPERING ///////////////////////////////////////////////////////
 
+
+
 // replace with your own API key
 const API_KEY = 'ZKBUR07BFrPvZSJKn3JnO8eL-g7FqYN9Ufcp4QHwnxo';
 
@@ -109,6 +111,8 @@ input.addEventListener("selection", event => {
 
 /////////////////////////////////////////////////////////// GEOCODING /////////////////////////////////////////////////////
 
+
+
 const map = new maplibregl.Map(
 {
     container: 'map',
@@ -130,6 +134,26 @@ const map = new maplibregl.Map(
               },
               generateId: true,
             },
+            'places': {
+                type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    properties: {
+                        description:
+                            '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                        icon: 'theatre'
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [50.07524023973632, 14.49028015136719],
+                },
+                
+            }]
+        }
+            }
         },
         layers: [{
             id: 'tiles',
@@ -146,6 +170,14 @@ const map = new maplibregl.Map(
             },
             paint: {},
             filter: ['==', '$type', 'Point'],
+        },{
+            id: 'places',
+    type: 'symbol',
+    source: 'places',
+    layout: {
+        'icon-image': '{icon}_15',
+        'icon-overlap': 'always',
+    },
         }],
     },
   })
@@ -179,6 +211,63 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
   geocode(input.value);
 }, false);
+
+
+map.on('load', () => {
+    map.addSource('places', {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'description':
+                            '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                        'icon': 'theatre'
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [14.49028015136719, 50.07524023973632],
+                    }
+                },
+                
+            ]
+        }
+    })
+});
+
+
+// Add a layer showing the places.
+map.addLayer({
+    'id': 'places',
+    'type': 'symbol',
+    'source': 'places',
+    'layout': {
+        'icon-image': '{icon}_15',
+        'icon-overlap': 'always'
+    }
+});
+
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on('click', 'places', (e) => {
+    const coordinates = e.features[0].geometry.coordinates.slice();
+    const description = e.features[0].properties.description;
+
+    // Ensure that if the map is zoomed out such that multiple
+    // copies of the feature are visible, the popup appears
+    // over the copy being pointed to.
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    new maplibregl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+});
 
 
 // function for calculating a bbox from an array of coordinates
@@ -242,8 +331,10 @@ async function geocode(query)
 
         if (json.items.length == 1)
         {
-            coordArr = json.items[0].bbox;            
+            coordArr = json.items[0].bbox;
+
         }else {
+
             coordArr = bbox(json.items.map(item => ([item.position.lon, item.position.lat])))
         }
         
