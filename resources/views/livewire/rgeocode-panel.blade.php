@@ -1,6 +1,7 @@
 <div class="w-1/4 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
 
     <form wire:submit.prevent="store" class="flex flex-col">
+        @csrf
         {{-- můžu přdat atribut readonly --}}
         <div class="grid grid-cols-12 items-baseline mb-4">
             <span class="select-none col-span-3">Druh:</span><x-text-input id="i-label" wire:model="label" name="label" placeholder="Druh" class="col-span-9"/>
@@ -25,9 +26,21 @@
         </div>
 
             <x-input-error class="self-start ml-14" :messages="$errors->get('zip')"/>
-        
-            <x-submit-button class="mt-4">Uložit do databáze</x-submit-button>
+ 
+            <x-submit-button class="my-4">Uložit do databáze</x-submit-button>
 
     </form>
+
+        <div x-data="{ open: false }">
+            
+            <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full">
+                    Uložená místa
+            </x-primary-button>
+
+            @livewire('modal-table', ['data' => $data])
+            {{-- musí tu být wire:model --}}
+            <livewire:modal-table  open="$open" wire:model='data'/>
+
+        </div>
    
 </div>

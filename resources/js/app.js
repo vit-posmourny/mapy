@@ -1,4 +1,7 @@
 import './bootstrap';
+import resize from '@alpinejs/resize'
+
+Alpine.plugin(resize)
 
 
 import.meta.glob([
