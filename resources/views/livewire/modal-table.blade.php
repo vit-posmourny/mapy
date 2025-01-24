@@ -12,7 +12,7 @@
 
         <template x-if="open">
 <!-- Modal Table -->
-            <div class="mt-4 max-h-[25vh] overflow-auto">
+            <div class="mt-4 max-h-[25vh] overflow-auto modal_table">
 
                 <table class="text-base border-collapse border border-slate-400">
 
