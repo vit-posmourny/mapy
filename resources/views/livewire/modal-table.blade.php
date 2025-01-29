@@ -1,8 +1,8 @@
 {{-- livewire\modal-table.blade.php --}}
-<div x-cloak x-show="open" class="absolute inset-0 flex items-center justify-center bg-gray-400 bg-opacity-50" x-transition>
+<div x-cloak x-show="open" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-400 bg-opacity-50" x-transition>
 
-    <div class="bg-white max-w-screen-lg rounded-lg shadow-lg p-2" @keydown.escape.window="open = false">
-<!-- Modal Header -->
+    <div class="bg-white max-w-2xl lg:max-w-fit rounded-lg shadow-lg p-2" @keydown.escape.window="open = false">
+        <!-- Modal Header -->
         <div class="flex justify-between px-3 pt-1 h-6">
 
             <h2 class="text-xl font-bold select-none">Uložená místa</h2>
@@ -11,8 +11,8 @@
         </div>
 
         <template x-if="open">
-<!-- Modal Table -->
-            <div class="mt-4 max-h-[25vh] overflow-auto scroll-smooth modal_table">
+            <!-- Modal Table -->
+            <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] overflow-auto scroll-smooth modal_table">
 
                 <table class="text-base border-collapse border border-slate-400">
 
@@ -43,7 +43,7 @@
                 </table>
             </div>
         </template>
-<!-- Modal Buttons -->
+        <!-- Modal Buttons -->
         <div class="mt-4 flex justify-end">
             
             <x-non-submit-button x-on:click="open = false" class="mr-2 mb-1">Close</x-non-submit-button>

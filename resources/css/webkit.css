@@ -1,8 +1,16 @@
 /* Celkový styl scrollbar */
 .modal_table::-webkit-scrollbar {
-    width: 0.75rem; /* Šířka posuvníku */
-    height: 0.75rem; /* Výška posuvníku (pro horizontální scroll) */
+  width: 1.5rem; /* Šířka posuvníku */
+  height: 1.5rem; /* Výška posuvníku (pro horizontální scroll) */
+}
+  
+@media screen and (min-width: 1024px){
+  /* Celkový styl scrollbar */
+  .modal_table::-webkit-scrollbar {
+      width: 0.75rem; /* Šířka posuvníku */
+      height: 0.75rem; /* Výška posuvníku (pro horizontální scroll) */
   }
+}
   
 /* Styl drážky (track) posuvníku */
 .modal_table::-webkit-scrollbar-track {
