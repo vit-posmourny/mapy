@@ -50,7 +50,7 @@
                 @elseif (request()->path() == 'rgeocode')
 
                     <livewire:rgeocode-panel/>
-                    {{-- <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script>  --}}
+                    <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script> 
 
                 @elseif (request()->path() == 'geocode')
                 
