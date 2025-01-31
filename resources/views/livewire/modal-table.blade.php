@@ -1,7 +1,7 @@
 {{-- livewire\modal-table.blade.php --}}
 <div x-cloak x-show="open" x-on:click="open = false" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-400 bg-opacity-50" x-transition>
     {{-- @click.stop="" on the modal content: This is crucial. It prevents the click event from bubbling up to the overlay, so clicks inside the modal don't close it. --}}
-    <div class="bg-white max-w-2xl lg:max-w-fit rounded-lg shadow-lg p-2" @click.stop="" @keydown.escape.window="open = false">
+    <div class=" portrait:w-screen bg-white max-w-2xl lg:max-w-fit rounded-lg shadow-lg p-2" @click.stop="" @keydown.escape.window="open = false">
         <!-- Modal Header -->
         <div class="flex justify-between px-3 pt-1 h-6">
 
