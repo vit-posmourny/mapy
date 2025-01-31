@@ -1,7 +1,7 @@
 <!-- resources\views\layouts\navigation.blade.php -->
 <nav x-data="{ open: false }" class="h-[7.5vh] min-h-16 bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="portrait:fixed portrait:left-0 portrait:top-0 portrait:right-0 portrait:z-10 portrait:overflow-x-scroll portrait:bg-white border-b portrait:border-gray-100 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div id="scroll-container" class="portrait:fixed portrait:left-0 portrait:top-0 portrait:right-0 portrait:z-10 portrait:overflow-x-scroll portrait:bg-white border-b portrait:border-gray-100 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -14,7 +14,7 @@
                 <!-- Navigation Links -->
                 <div class="flex overflow-x-auto space-x-8 portrait:pr-20 portrait:pl-4 sm:-my-px sm:ms-10 sm:flex">
 
-                    <x-nav-link id="x-nav-link-dashboard" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
@@ -26,7 +26,7 @@
                         {{ __('Rgeocoding')}}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('geocode')" :active="request()->routeIs('geocode')" class="truncate">
+                    <x-nav-link id="i-geocode" :href="route('geocode')" :active="request()->routeIs('geocode')" class="truncate">
                         {{ __('Geocoding')}}
                     </x-nav-link>
 
@@ -70,7 +70,6 @@
             
         </div>
     </div>
-
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class=" sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
@@ -137,3 +136,5 @@
 
     </x-dropdown>
 </div>
+
+<script src="{{ Vite::asset('resources/js/scroll-remember.js') }}"></script>
