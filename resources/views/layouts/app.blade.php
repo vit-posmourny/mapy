@@ -38,7 +38,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="landscape:flex portrait:flex-col flex justify-center">
+            <main class="h-[92.5vh] flex landscape:flex portrait:flex-col lg:justify-center">
 
                 {{$slot}}
 
@@ -62,7 +62,6 @@
             </main>
             
         </div>
-    
     </body>
         @livewireScripts
 </html>

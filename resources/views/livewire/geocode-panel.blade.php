@@ -1,10 +1,10 @@
-<div class="w-1/4 h-100 shadow-2xl p-8 text-xl font-medium overflow-hidden min-w-96">
+<div class="w-1/4 portrait:w-full shadow-2xl p-2 lg:p-8 text-xl font-medium min-w-72 lg:min-w-96">
 
     <form id="i-geo-form" class="flex flex-col">
 
         <div class="flex justify-between items-baseline mb-4">
             
-            <x-input-whisper id="i-search-field" name="search-field" placeholder="Vložte adresu ..." class="text-center"/>
+            <x-input-whisper id="i-search-field" name="search-field" placeholder="Vložte adresu ..." class="portrait:w-full text-center"/>
             
         </div>
         
