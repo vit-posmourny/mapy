@@ -8,10 +8,6 @@
   width: 416px;
 }
 
-/* .autoComplete_wrapper > input::placeholder {
-  color: rgba(123, 123, 123, 0.5);
-  transition: all 0.3s ease;
-} */
 
 .autoComplete_wrapper > ul {
   position: absolute;
@@ -73,6 +69,6 @@
 
 @media only screen and (max-width: 600px) {
   .autoComplete_wrapper > input {
-    width: 18rem;
+    width: 100vw;
   }
 }
