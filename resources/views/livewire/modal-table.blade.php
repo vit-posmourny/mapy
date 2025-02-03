@@ -43,7 +43,9 @@
                         </tbody>
                     </table>
                 @else 
-                    <p class="text-center py-2">Tabulka je prázná.</p>
+                    <div class="flex items-center mx-4 lg:mx-8">
+                        <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
+                    </div>
                 @endif
 
             </div>
