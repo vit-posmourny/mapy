@@ -98,6 +98,7 @@ class RgeocodePanel extends Component
         foreach ($records as $record) {
 
             $this->data[] = [
+                'id' => $record->id,
                 'label' => $record->label,
                 'location' => $record->location,
                 'name' => $record->name,

@@ -19,6 +19,7 @@
 
                         <thead class="font-bold text-lg text-green-900 bg-green-200">
                             <tr>
+                                <th class="border px-2 border-slate-400">Id</th>
                                 <th class="border px-2 border-slate-400">Druh</th>
                                 <th class="border px-2 border-slate-400">Lokace</th>
                                 <th class="border px-2 border-slate-400">Název</th>
@@ -31,6 +32,7 @@
                         <tbody class="text-nowrap">
                         @foreach ($data as $row)
                             <tr>
+                                <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['name'] }}</td>
