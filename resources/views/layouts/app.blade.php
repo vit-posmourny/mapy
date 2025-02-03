@@ -38,7 +38,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="h-[92.5vh] flex landscape:flex portrait:flex-col lg:justify-center">
+            <x-main>
 
                 {{$slot}}
 
@@ -59,7 +59,7 @@
 
                 @endif
 
-            </main>
+            </x-main>
             
         </div>
     </body>
