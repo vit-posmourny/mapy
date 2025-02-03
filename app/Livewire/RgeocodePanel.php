@@ -89,12 +89,12 @@ class RgeocodePanel extends Component
     }
 
 
-    public function readData()
+    public function readData(): void
     {
         $this->reset('data');
 
         $records = DB::select('select * from rgeocodes where user_id = ?', [auth()->id()]);
-
+        
         foreach ($records as $record) {
 
             $this->data[] = [
