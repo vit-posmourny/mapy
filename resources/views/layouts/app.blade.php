@@ -62,6 +62,7 @@
             </x-main>
             
         </div>
+        
     </body>
         @livewireScripts
 </html>
