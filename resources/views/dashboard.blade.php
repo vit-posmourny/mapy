@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <div class="portrait:pt-20 py-4 lg:py-12">
+    <div class="portrait:pt-20 py-4 lg:h-auto lg:pt-12">
 
         <div class="flex flex-col items-center max-w-7xl mx-auto px-2 lg:px-8">
 
