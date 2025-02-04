@@ -31,7 +31,7 @@
                         </thead>
                         <tbody class="text-nowrap">
                         @foreach ($data as $row)
-                            <tr>
+                            <tr x-data x-on:click="$store.row.rowId = {{ $row['id'] }}">
                                 <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
@@ -55,9 +55,18 @@
         <!-- Modal Buttons -->
         <div class="mt-4 flex justify-end">
             
-            <x-non-submit-button x-on:click="open = false" class="mr-2 mb-1">Close</x-non-submit-button>
+            <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
+            <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
             
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('row', {
+            rowId: null,
+        })
+    })
+</script>
 

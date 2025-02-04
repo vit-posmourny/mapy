@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\Attributes\Modelable;
+use App\Models\Rgeocode;
 
 class ModalTable extends Component
 {
@@ -17,6 +18,13 @@ class ModalTable extends Component
 
     #[Modelable] // musí zde být
     public $data;
+
+
+    public function delete($id)
+    {
+        Rgeocode::destroy($id);
+        
+    }
     
  
     public function render()
