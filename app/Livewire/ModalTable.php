@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\Attributes\Modelable;
 use App\Models\Rgeocode;
+use Livewire\Attributes\Modelable;
 
 class ModalTable extends Component
 {
@@ -16,6 +16,7 @@ class ModalTable extends Component
     {
         Rgeocode::destroy($id);
         session()->flash('success', 'true');
+        // $this->dispatch('data-deleted');
     }
     
  
