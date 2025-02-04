@@ -31,7 +31,7 @@
                         </thead>
                         <tbody class="text-nowrap">
                         @foreach ($data as $row)
-                            <tr x-data x-on:click="$store.row.rowId = {{ $row['id'] }}">
+                            <tr x-data x-on:click="$store.row.rowId = {{ $row['id'] }}" :class="$store.row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
                                 <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
