@@ -55,8 +55,10 @@
         <!-- Modal Buttons -->
         <div class="mt-4 flex justify-end">
             
-            <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
-            <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
+            @if ($data)
+                <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
+            @endif
+                <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
             
         </div>
     </div>
