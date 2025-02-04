@@ -30,6 +30,7 @@ class RgeocodePanel extends Component
 
     protected $listeners = [
         'values-updated' => 'handleUserUpdate',
+        'data-deleted' => 'readData',
     ];
 
 

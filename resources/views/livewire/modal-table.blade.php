@@ -44,23 +44,30 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="mt-4 flex justify-end">
+
+                        <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
+        
+                        <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
+                    
+                    </div>
                 @else 
                     <div class="flex items-center mx-4 lg:mx-8">
                         <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+        
+                        <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
+                    
                     </div>
                 @endif
 
             </div>
         </template>
         <!-- Modal Buttons -->
-        <div class="mt-4 flex justify-end">
-            
-            @if ($data)
-                <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
-            @endif
-                <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
-            
-        </div>
+
     </div>
 </div>
 
