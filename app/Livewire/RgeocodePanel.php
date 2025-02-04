@@ -30,7 +30,7 @@ class RgeocodePanel extends Component
 
     protected $listeners = [
         'values-updated' => 'handleUserUpdate',
-        'data-deleted' => 'readData',
+        'data-deleted' => 'refreshData',
     ];
 
 
@@ -109,6 +109,13 @@ class RgeocodePanel extends Component
                 'longitude' => $record->longitude,
             ];
         }
+    }
+
+
+    public function refreshData()
+    {
+        $this->readData();
+        session()->flash('success', 'true');
     }
 
 

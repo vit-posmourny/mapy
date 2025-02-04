@@ -15,8 +15,8 @@ class ModalTable extends Component
     public function delete($id)
     {
         Rgeocode::destroy($id);
-        session()->flash('success', 'true');
-        // $this->dispatch('data-deleted');
+        // session()->flash('success', 'true');
+        $this->dispatch('data-deleted');
     }
     
  
