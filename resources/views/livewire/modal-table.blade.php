@@ -13,7 +13,7 @@
         <template x-if="open">
             <!-- Modal Table -->
             <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] overflow-auto scroll-smooth modal_table">
-            
+                
                 @if ($data)
                     <table class="text-base border-collapse border border-slate-400">
 
@@ -31,7 +31,7 @@
                         </thead>
                         <tbody class="text-nowrap">
                         @foreach ($data as $row)
-                            <tr x-data x-on:click="$store.row.rowId = {{ $row['id'] }}" :class="$store.row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
+                            <tr x-on:click="$store.Row.rowId = {{ $row['id'] }}" :class="$store.Row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
                                 <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
                                 <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
@@ -44,38 +44,52 @@
                         @endforeach
                         </tbody>
                     </table>
-
+                    <!-- Modal Buttons -->
                     <div class="mt-4 flex justify-end">
 
-                        <x-delete-button wire:click='delete($store.row.rowId)' class="mb-1"></x-delete-button>
-        
+                        <x-delete-button id="i-del-btn" x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
+
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
-                    
+                        
                     </div>
                 @else 
                     <div class="flex items-center mx-4 lg:mx-8">
-                        <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
-                    </div>
 
+                        <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
+
+                    </div>
+                    <!-- Modal Button -->
                     <div class="mt-4 flex justify-end">
-        
+
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                     
                     </div>
                 @endif
 
             </div>
-        </template>
-        <!-- Modal Buttons -->
 
+        </template>
+        
     </div>
+
 </div>
 
+
 <script>
+
     document.addEventListener('alpine:init', () => {
-        Alpine.store('row', {
+        Alpine.store('Row', {
             rowId: null,
         })
     })
+
+    document.addEventListener('deleteOk', (event) => {
+       
+            if (Alpine.store('Row').rowId === event.detail.id) {
+                Alpine.store('Row').rowId = null;
+            }
+    });
+    
 </script>
+
 
