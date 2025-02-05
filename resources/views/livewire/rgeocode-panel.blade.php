@@ -33,7 +33,7 @@
 
     </form>
 
-        <div x-data="{ open: false }">
+        <div x-data="{ open: false }" class="flex flex-col">
             
             <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full hidden portrait:block lg:block">
                     Uložená místa

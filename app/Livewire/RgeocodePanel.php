@@ -112,10 +112,11 @@ class RgeocodePanel extends Component
     }
 
 
-    public function refreshData()
+    public function refreshData($id)
     {
         $this->readData();
-        session()->flash('success', 'true');
+        session()->flash('success', $id);
+        $this->dispatch('deleteOk', id: $id);
     }
 
 
