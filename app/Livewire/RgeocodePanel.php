@@ -89,9 +89,7 @@ class RgeocodePanel extends Component
             session()->flash('store_success', true);
         } else {
             session()->flash('store_success', false);
-        }
-
-        
+        }   
     }
 
 
@@ -129,7 +127,7 @@ class RgeocodePanel extends Component
         $this->readData();
 
         session()->flash('delete_success', $destroy_success);
-        
+
         $this->dispatch('deleteOk', id: $id);
     }
 
