@@ -84,9 +84,14 @@ class RgeocodePanel extends Component
 
         $validated += ['user_id' => auth()->id()];
 
-        Rgeocode::create($validated);
+        if (Rgeocode::create($validated)) 
+        {
+            session()->flash('store_success', true);
+        } else {
+            session()->flash('store_success', false);
+        }
 
-        session()->flash('store_success', true);
+        
     }
 
 
@@ -110,7 +115,8 @@ class RgeocodePanel extends Component
             ];
         }
         
-        if (empty($this->data)) {
+        if (empty($this->data)) 
+        {
             session()->flash('readData_success', false);
         }else{
             session()->flash('readData_success', true);
@@ -121,7 +127,9 @@ class RgeocodePanel extends Component
     public function refreshData($id, $destroy_success)
     {
         $this->readData();
+
         session()->flash('delete_success', $destroy_success);
+        
         $this->dispatch('deleteOk', id: $id);
     }
 
