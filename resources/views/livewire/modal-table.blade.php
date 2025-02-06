@@ -12,7 +12,7 @@
 
         <template x-if="open">
 
-            @if (session('readData') === true)
+            @if (session('readData_success') === true)
     |       
                 <div class="mt-4">
 
@@ -65,7 +65,7 @@
             @endif 
                 
              
-            @if (session('readData') === false)
+            @if (session('readData_success') === false)
             
                 <!-- Modal Table -->
                 <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] modal_table">
