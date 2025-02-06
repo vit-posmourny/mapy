@@ -2,7 +2,7 @@
 
     <form wire:submit.prevent="store" class="flex flex-col">
         @csrf
-        {{-- můžu přdat atribut readonly --}}
+        
         <div class="grid grid-cols-12 items-baseline lg:mb-4">
             <span class="hidden lg:inline select-none col-span-3">Druh:</span><x-text-input id="i-label" wire:model="label" name="label" placeholder="Druh" class="col-span-12 lg:col-span-9"/>
         </div>
@@ -26,11 +26,12 @@
         </div>
 
             <x-input-error class="self-start ml-14" :messages="$errors->get('zip')"/>
- 
-            <x-submit-button class="hidden mt-4 portrait:block portrait:mb-2 lg:block lg:mb-4">Uložit do databáze</x-submit-button>
 
+        
+            <x-submit-button class="hidden w-full mt-4 portrait:block portrait:mb-2 lg:block lg:mb-4">Uložit do databáze</x-submit-button>
+        
             <x-submit-button class="mt-4 mb-2 portrait:hidden lg:hidden"><img src="images\svg\database_upload_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"/></x-submit-button>
-
+ 
     </form>
 
         <div x-data="{ open: false }" class="flex flex-col">
