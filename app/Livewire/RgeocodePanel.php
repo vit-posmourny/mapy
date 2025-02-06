@@ -86,7 +86,7 @@ class RgeocodePanel extends Component
 
         Rgeocode::create($validated);
 
-        session()->flash('store_success', 'true');
+        session()->flash('store_success', true);
     }
 
 
