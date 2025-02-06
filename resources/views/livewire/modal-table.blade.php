@@ -13,11 +13,11 @@
         <template x-if="open">
 
             @if (session('readData') === true)
-    |       <!-- Modal Table -->
+    |       
                 <div class="mt-4">
 
-                    <div class="max-h-[50vh] lg:max-h-[15vh] overflow-y-auto modal_table">
-                        
+                    <div class="max-h-[50vh] lg:max-h-[25vh] overflow-y-auto modal_table">
+                        <!-- Table -->
                         <table class="text-base border-collapse border border-slate-400 w-auto">
 
                             <thead class="font-bold text-lg text-green-900 bg-green-200 w-12">
