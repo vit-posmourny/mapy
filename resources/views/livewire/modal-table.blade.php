@@ -11,48 +11,64 @@
         </div>
 
         <template x-if="open">
-            <!-- Modal Table -->
-            <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] overflow-auto scroll-smooth modal_table">
-                
-                @if ($data)
-                    <table class="text-base border-collapse border border-slate-400">
 
-                        <thead class="font-bold text-lg text-green-900 bg-green-200">
-                            <tr>
-                                <th class="border px-2 border-slate-400">Id</th>
-                                <th class="border px-2 border-slate-400">Druh</th>
-                                <th class="border px-2 border-slate-400">Lokace</th>
-                                <th class="border px-2 border-slate-400">Název</th>
-                                <th class="border px-2 border-slate-400">PSČ</th>
-                                <th class="border px-2 border-slate-400">Země</th>
-                                <th class="border px-2 border-slate-400">Z.Šířka</th>
-                                <th class="border px-2 border-slate-400">Z.Délka</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-nowrap">
-                        @foreach ($data as $row)
-                            <tr x-on:click="$store.Row.rowId = {{ $row['id'] }}" :class="$store.Row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
-                                <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['name'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['zip'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['isoCode'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['latitude'] }}</td>
-                                <td class="border text-center px-2 border-slate-400">{{ $row['longitude'] }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+            @if (session('readData') === true)
+    |       <!-- Modal Table -->
+                <div class="mt-4">
+
+                    <div class="max-h-[50vh] lg:max-h-[15vh] overflow-y-auto modal_table">
+                        
+                        <table class="text-base border-collapse border border-slate-400 w-auto">
+
+                            <thead class="font-bold text-lg text-green-900 bg-green-200 w-12">
+                                <tr>
+                                    <th class="border px-2 border-slate-400">Id</th>
+                                    <th class="border px-2 border-slate-400">Druh</th>
+                                    <th class="border px-2 border-slate-400">Lokace</th>
+                                    <th class="border px-2 border-slate-400">Název</th>
+                                    <th class="border px-2 border-slate-400">PSČ</th>
+                                    <th class="border px-2 border-slate-400">Země</th>
+                                    <th class="border px-2 border-slate-400">Z.Šířka</th>
+                                    <th class="border px-2 border-slate-400">Z.Délka</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody class="text-nowrap">
+                                @foreach ($data as $row)
+                                    <tr x-on:click="$store.Row.rowId = {{ $row['id'] }}" :class="$store.Row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['name'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['zip'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['isoCode'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['latitude'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400">{{ $row['longitude'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                    
+                        </table>
+
+                    </div>
                     <!-- Modal Buttons -->
-                    <div class="mt-4 flex justify-end">
+                    <div class="flex mt-4 justify-end">
 
-                        <x-delete-button id="i-del-btn" x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
+                        <x-delete-button x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
 
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                         
                     </div>
-                @else 
+
+                </div>  
+
+            @endif 
+                
+             
+            @if (session('readData') === false)
+            
+                <!-- Modal Table -->
+                <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] modal_table">
                     <div class="flex items-center mx-4 lg:mx-8">
 
                         <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
@@ -64,10 +80,10 @@
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                     
                     </div>
-                @endif
+                </div>
 
-            </div>
-
+            @endif
+            
         </template>
         
     </div>
@@ -78,9 +94,11 @@
 <script>
 
     document.addEventListener('alpine:init', () => {
-        Alpine.store('Row', {
-            rowId: null,
-        })
+        Alpine.store(
+            'Row', {
+                rowId: null,
+            } 
+        )
     })
 
     document.addEventListener('deleteOk', (event) => {
@@ -89,7 +107,7 @@
                 Alpine.store('Row').rowId = null;
             }
     });
-    
+
 </script>
 
 
