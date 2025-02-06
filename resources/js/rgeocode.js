@@ -147,8 +147,6 @@ map.on('click', async function mapClick(e) {
 					isoCode: isoCode,
 				}
 			}));
-			// whatever we got from the API, we log to the console
-			console.log(json.items);
 		}
 	} catch (ex) {
 		// in case of any trouble, we log it to the console

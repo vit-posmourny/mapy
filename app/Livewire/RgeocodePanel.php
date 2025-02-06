@@ -30,6 +30,7 @@ class RgeocodePanel extends Component
 
     protected $listeners = [
         'values-updated' => 'handleUserUpdate',
+        'data-deleted' => 'refreshData',
     ];
 
 
@@ -85,7 +86,7 @@ class RgeocodePanel extends Component
 
         Rgeocode::create($validated);
 
-        session()->flash('success', 'true');
+        session()->flash('store_success', true);
     }
 
 
@@ -98,6 +99,7 @@ class RgeocodePanel extends Component
         foreach ($records as $record) {
 
             $this->data[] = [
+                'id' => $record->id,
                 'label' => $record->label,
                 'location' => $record->location,
                 'name' => $record->name,
@@ -107,6 +109,20 @@ class RgeocodePanel extends Component
                 'longitude' => $record->longitude,
             ];
         }
+        
+        if (empty($this->data)) {
+            session()->flash('readData_success', false);
+        }else{
+            session()->flash('readData_success', true);
+        }
+    }
+
+
+    public function refreshData($id, $destroy_success)
+    {
+        $this->readData();
+        session()->flash('delete_success', $destroy_success);
+        $this->dispatch('deleteOk', id: $id);
     }
 
 
