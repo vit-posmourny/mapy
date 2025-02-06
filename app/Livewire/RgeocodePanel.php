@@ -109,6 +109,12 @@ class RgeocodePanel extends Component
                 'longitude' => $record->longitude,
             ];
         }
+        
+        if (empty($this->data)) {
+            session()->flash('readData', false);
+        }else{
+            session()->flash('readData', true);
+        }
     }
 
 
