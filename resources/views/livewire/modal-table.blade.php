@@ -53,9 +53,9 @@
                     </div>
                     <!-- Modal Buttons -->
                     <div class="flex mt-4 justify-end">
-
+                        {{-- Delete button --}}
                         <x-delete-button x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
-
+                        {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                         
                     </div>
