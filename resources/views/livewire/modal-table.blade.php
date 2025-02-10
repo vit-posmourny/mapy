@@ -35,7 +35,7 @@
                     
                             <tbody class="text-nowrap">
                                 @foreach ($data as $row)
-                                    <tr x-on:click="$store.Row.rowId = {{ $row['id'] }}" :class="$store.Row.rowId == {{$row['id']}} ? 'bg-green-100' : ''">
+                                    <tr x-on:click="$store.Row.pushRowId({{ $row['id'] }})" :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
                                         <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
                                         <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
                                         <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
@@ -93,20 +93,54 @@
 
 <script>
 
-    document.addEventListener('alpine:init', () => {
-        Alpine.store(
-            'Row', {
-                rowId: null,
-            } 
-        )
+    // document.addEventListener('keydown', function(event) 
+    // {
+    //     var string;
+    //     if (event.altKey) 
+    //     {
+    //         Alpine.store('Row').rowId.forEach(value => {
+    //             string += ' ' + value;
+    //         });
+    //          alert(string);
+    //     }   
+    // })
+
+    document.addEventListener('alpine:init', () => 
+    {
+        Alpine.store('Row', {
+            rowId: [],
+
+            pushRowId(id) {
+                if (n = this.rowId.indexOf(id) + 1) 
+                {
+                    this.rowId[n-1] = null;
+                } 
+                else {
+                    this.rowId.push(id);
+                }
+                
+            },
+
+            findRowId(id) {
+                if (this.rowId.includes(id)) 
+                {
+                    return true;
+                } 
+                else {
+                    return false;
+                }
+            },
+
+            purgeRowId() {
+                this.rowId.length = 0;
+            }
+        })
     })
 
-    document.addEventListener('deleteOk', (event) => {
-       
-            if (Alpine.store('Row').rowId === event.detail.id) {
-                Alpine.store('Row').rowId = null;
-            }
-    });
+    document.addEventListener('deleteOk', () => 
+    {
+        Alpine.store('Row').purgeRowId();
+    })
 
 </script>
 
