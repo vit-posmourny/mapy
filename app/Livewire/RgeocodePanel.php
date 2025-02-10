@@ -116,7 +116,7 @@ class RgeocodePanel extends Component
         if (empty($this->data)) 
         {
             session()->flash('readData_success', false);
-        }else{
+        } else {
             session()->flash('readData_success', true);
         }
     }
