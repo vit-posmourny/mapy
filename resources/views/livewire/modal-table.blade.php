@@ -2,7 +2,7 @@
 <div x-cloak x-show="open" x-on:click="open = false" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-400 bg-opacity-50" x-transition>
     {{-- @click.stop="" on the modal content: This is crucial. It prevents the click event from bubbling up to the overlay, so clicks inside the modal don't close it. --}}
     <div class=" portrait:w-screen bg-white max-w-2xl lg:max-w-fit rounded-lg shadow-lg p-2" @click.stop="" @keydown.escape.window="open = false">
-        <!-- Modal Header -->
+        <!-- Header -->
         <div class="flex justify-between px-3 pt-1 h-6">
 
             <h2 class="text-xl font-bold select-none">Uložená místa</h2>
@@ -51,34 +51,28 @@
                         </table>
 
                     </div>
-                    <!-- Modal Buttons -->
+                    <!-- Modal buttons -->
                     <div class="flex mt-4 justify-end">
                         {{-- Delete button --}}
                         <x-delete-button x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
                         {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
-                        
                     </div>
 
                 </div>  
 
             @endif 
                 
-             
             @if (session('readData_success') === false)
             
-                <!-- Modal Table -->
                 <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] modal_table">
+                    <!-- Info icon -->
                     <div class="flex items-center mx-4 lg:mx-8">
-
                         <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
-
                     </div>
-                    <!-- Modal Button -->
+                    <!-- Close button -->
                     <div class="mt-4 flex justify-end">
-
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
-                    
                     </div>
                 </div>
 
@@ -90,20 +84,19 @@
 
 </div>
 
-
 <script>
 
-    // document.addEventListener('keydown', function(event) 
-    // {
-    //     var string;
-    //     if (event.altKey) 
-    //     {
-    //         Alpine.store('Row').rowId.forEach(value => {
-    //             string += ' ' + value;
-    //         });
-    //          alert(string);
-    //     }   
-    // })
+    document.addEventListener('keydown', function(event) 
+    {
+        var string;
+        if (event.altKey) 
+        {
+            Alpine.store('Row').rowId.forEach(value => {
+                string += ' ' + value;
+            });
+             alert(string);
+        }   
+    })
 
     document.addEventListener('alpine:init', () => 
     {
