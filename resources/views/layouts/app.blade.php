@@ -41,17 +41,17 @@
 
                 {{$slot}}
 
-                @if (request()->path() == 'elevation')
+                @if (request()->path() === 'elevation')
 
                     <livewire:elevation-panel/>
                     <script src="{{ Vite::asset('resources/js/elevation.js') }}"></script>
 
-                @elseif (request()->path() == 'rgeocode')
+                @elseif (request()->path() === 'rgeocode')
 
                     <livewire:rgeocode-panel/>
                     <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script> 
 
-                @elseif (request()->path() == 'geocode')
+                @elseif (request()->path() === 'geocode')
                 
                     <livewire:geocode-panel/>
                     <script src="{{ Vite::asset('resources/js/geowhisper.js') }}"></script>
