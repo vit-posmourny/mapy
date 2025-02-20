@@ -1,0 +1,49 @@
+:root {
+    /* main-button-styles.css, disclosure-styles.css  */
+    --text-color: #FFFFFF;
+    --btn-main-grad: linear-gradient(#42A1EC, #0070C9);
+    --btn-main-hover: linear-gradient(#51A9EE, #147BCD);
+    --btn-main-active: linear-gradient(#3D94D9, #0067B9);
+
+    /*disclosure-styles.css*/
+    --font-family:"Franklin Gothic Book",sans-serif;
+    --box-shadow-accord: inset 0 0px 2px 1px var(--primary);
+    --box-shadow-accord-focus: rgba(131, 192, 253, 0.5) 0 0 0 1px;
+    --box-shadow-details: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
+
+    /*main-styles.css*/
+    --background-main: linear-gradient(to bottom,
+    rgba(77,77,77,1) 0%, rgba(54,54,54,1) 100%);
+    --background-main-invert: linear-gradient(to top,
+    rgba(77,77,77,1) 0%, rgba(54,54,54,1) 100%);
+    --background-main-3x: linear-gradient(to bottom,
+    rgba(77,77,77,1) 0%, rgba(54,54,54,1) 15%,
+    rgba(54,54,54,1) 85%, rgba(77,77,77,1) 100%);
+
+    /*main-styles.css*/
+    --box-shadow-main: inset 0 0 4px 3px #42A1ECFF;
+    --bg-main-gray: #5e5e5e;
+
+    /*slot-styles.css*/
+    --size-play-button: 48px;
+    --track-time-color: #42A1EC;
+    --track-name-color: #e8c645;
+    --td-title-color: #e5e5e5;
+
+    /*login-register-styles.css*/
+    --primary: #0070C9;
+    --success: #00BA88;
+    --error: #FA3C6A;
+    --light-gray: #F0F0F0;
+    --light-blue: #e0f1ff;
+
+    /*usracc-modal.css*/
+    --bg-user-modal: linear-gradient(to top, snow 75%, rgb(70, 70, 70) 75%,var(--bg-main-gray) 76%, var(--bg-main-gray) 100%);
+}
+
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

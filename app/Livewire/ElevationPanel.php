@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Elevation;
-use Illuminate\Support\Facades\Auth;
 
 
 class ElevationPanel extends Component
