@@ -1,8 +1,10 @@
 <!-- resources\views\layouts\navigation.blade.php -->
 <nav x-data="{ open: false }" class="h-[7.5vh] min-h-16 bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div id="scroll-container" class="portrait:fixed portrait:left-0 portrait:top-0 portrait:right-0 portrait:z-10 portrait:overflow-x-scroll portrait:bg-white border-b portrait:border-gray-100 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div id="scroll-container" class="portrait:fixed portrait:left-0 portrait:top-0 portrait:right-0 portrait:z-10 portrait:overflow-x-scroll portrait:bg-white border-b portrait:border-gray-100 px-2 sm:px-6 lg:px-8">
+
         <div class="flex justify-between h-16">
+
             <div class="flex">
                 <!-- Logo -->
                 <div class="portrait:hidden shrink-0 flex items-center">
@@ -31,10 +33,13 @@
                     </x-nav-link>
 
                 </div>
-            </div>
 
+            </div>
+            
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                <img class="size-10" src="https://api.dicebear.com/9.x/initials/svg?seed={{ Auth::user()->name }}&radius=50"/>
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -57,7 +62,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -66,7 +70,6 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-                
             </div>
         </div>
     </div>
