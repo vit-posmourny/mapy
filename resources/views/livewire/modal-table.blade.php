@@ -85,10 +85,10 @@
 </div>
 
 <script>
-
+    // pomocna fce. pro zjisteni, co obsahuje pole rowId
     document.addEventListener('keydown', function(event) 
     {
-        var string;
+        let string;
         if (event.altKey) 
         {
             Alpine.store('Row').rowId.forEach(value => {
@@ -98,11 +98,21 @@
         }   
     })
 
+
+    document.addEventListener('keydown', function(event) 
+    {
+        if (event.key === 'ArrowDown')
+        {
+            alert('ArrowDown');
+        }
+    })
+
+
     document.addEventListener('alpine:init', () => 
     {
         Alpine.store('Row', {
             rowId: [],
-
+            // The indexOf() method returns -1 if the value is not found.
             pushRowId(id) {
                 if (n = this.rowId.indexOf(id) + 1) 
                 {
