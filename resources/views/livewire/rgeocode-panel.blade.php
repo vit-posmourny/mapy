@@ -48,7 +48,7 @@
             
             @livewire('modal-table', ['data' => $data])
             {{-- musí tu být wire:model --}}
-            <livewire:modal-table  open="$open" wire:model='data'/>
+            <livewire:modal-table wire:model='data'/>
 
         </div>
 </div>
