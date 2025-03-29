@@ -36,14 +36,14 @@
                             <tbody class="text-nowrap">
                                 @foreach ($data as $row)
                                     <tr x-on:click="$store.Row.pushRowId({{ $row['id'] }})" :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['id'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['label'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['location'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['name'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['zip'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['isoCode'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['latitude'] }}</td>
-                                        <td class="border text-center px-2 border-slate-400">{{ $row['longitude'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['id'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['label'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['location'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['name'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['zip'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['isoCode'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['latitude'] }}</td>
+                                        <td class="border text-center px-2 border-slate-400 select-none">{{ $row['longitude'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
