@@ -85,41 +85,29 @@
 </div>
 
 <script>
-    // pomocna fce. pro zjisteni, co obsahuje pole rowId
-    document.addEventListener('keydown', function(event) 
-    {
-        let string;
-        if (event.altKey) 
-        {
-            Alpine.store('Row').rowId.forEach(value => {
-                string += ' ' + value;
-            });
-             alert(string);
-        }   
-    })
 
-
-    document.addEventListener('keydown', function(event) 
-    {
-        if (event.key === 'ArrowDown')
-        {
-            alert('ArrowDown');
-        }
-    })
-
+    let shiftPressed;
 
     document.addEventListener('alpine:init', () => 
     {
         Alpine.store('Row', {
             rowId: [],
-            // The indexOf() method returns -1 if the value is not found.
+            // array indexOf() method returns -1 if the value is not found
+            // method returns the first index (position) of a specified value
             pushRowId(id) {
                 if (n = this.rowId.indexOf(id) + 1) 
                 {
                     this.rowId[n-1] = null;
                 } 
                 else {
-                    this.rowId.push(id);
+                    if (shiftPressed)
+                    {
+                        this.rowId.push(id);
+                    } else {
+
+                        this.purgeRowId();
+                        this.rowId.push(id);
+                    }
                 }
                 
             },
@@ -139,6 +127,35 @@
             }
         })
     })
+
+
+    // pomocna fce. pro zjisteni, co obsahuje pole rowId
+    document.addEventListener('keydown', function(event) 
+    {
+        let string;
+        if (event.altKey) 
+        {
+            Alpine.store('Row').rowId.forEach(value => {
+                string += ' ' + value;
+            });
+             alert(string);
+        }   
+
+         if (event.shiftKey)
+        {
+            shiftPressed = true;
+        }
+    })
+
+
+    document.addEventListener('keyup', function(event)
+    {
+        if (event.key === 'Shift')
+        {
+            shiftPressed = false;
+        }
+    })
+
 
     document.addEventListener('deleteOk', () => 
     {
