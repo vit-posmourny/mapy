@@ -68,7 +68,7 @@
                 <div class="mt-4 max-h-[50vh] lg:max-h-[25vh] modal_table">
                     <!-- Info icon -->
                     <div class="flex items-center mx-4 lg:mx-8">
-                        <img class="mr-4" src="images\svg\info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"><span class="text-center mr-2">Tabulka je prázná.</span>
+                        <img class="mr-4" src="{{ Vite::svg('info_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}"><span class="text-center mr-2">Tabulka je prázná.</span>
                     </div>
                     <!-- Close button -->
                     <div class="mt-4 flex justify-end">
