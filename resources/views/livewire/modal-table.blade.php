@@ -86,7 +86,7 @@
 
 <script>
 
-    let shiftPressed;
+    let shiftPressed = false;
 
     document.addEventListener('alpine:init', () => 
     {
