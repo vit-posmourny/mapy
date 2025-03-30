@@ -41,9 +41,9 @@
             </x-primary-button>
 
             <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full portrait:hidden lg:hidden">
-                <img src="{{ Vite::asset('resources/images\svg\database_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
-                <img src="{{ Vite::asset('resources/images/svg/chevron_right_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
-                <img src="{{ Vite::asset('resources/images/svg/table_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}"> 
+                <img src="{{ Vite::svg('database_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
+                <img src="{{ Vite::svg('chevron_right_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
+                <img src="{{ Vite::svg('table_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}"> 
             </x-primary-button>
             
             @livewire('modal-table', ['data' => $data])

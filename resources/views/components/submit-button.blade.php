@@ -6,9 +6,9 @@
 
         @if (session('store_success'))
 
-            <img class="lg:col-span-2 portrait:self-center lg:self-center w-6 h-6 lg:w-8 lg:h-8 ml-2 animate-[ping_1s_ease-in-out_1]" src="images\svg\checkmark-svgrepo-com.svg">
+            <img class="lg:col-span-2 portrait:self-center lg:self-center w-6 h-6 lg:w-8 lg:h-8 ml-2 animate-[ping_1s_ease-in-out_1]" src="{{ Vite::svg('checkmark-svgrepo-com.svg') }}">
         @else
-            <img class="lg:col-span-2 portrait:self-center lg:self-center w-6 h-6 lg:w-8 lg:h-8 ml-2 animate-spin" wire:loading.delay src="images\svg\loading spinner.svg">
+            <img class="lg:col-span-2 portrait:self-center lg:self-center w-6 h-6 lg:w-8 lg:h-8 ml-2 animate-spin" wire:loading.delay src="{{ Vite::svg('loading spinner.svg') }}">
         @endif
 
     </div>
