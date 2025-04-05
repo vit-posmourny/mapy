@@ -3,45 +3,45 @@ let shiftPressed = false;
 document.addEventListener('alpine:init', () => 
 {
     Alpine.store('Row', {
-        rowId: [],
+        rowIds: [],
         lastClickedRowId: null,
         // array indexOf() method returns -1 if the value is not found
         // method returns the first index (position) of a specified value
         pushRowId(id) {
-            if (index = this.rowId.indexOf(id) + 1) 
+            if (index = this.rowIds.indexOf(id) + 1) 
             {
-                this.rowId.splice(index-1, 1);
+                this.rowIds.splice(index-1, 1);
             } 
             else {
                 if (shiftPressed) 
                 {
-                    this.rowId.push(id);
+                    this.rowIds.push(id);
                 } else {
-                    this.rowId.length = 0;
-                    this.rowId.push(id);
+                    this.rowIds.length = 0;
+                    this.rowIds.push(id);
                 }
             }
         },
 
         findRowId(id) {
-            return this.rowId.includes(id);
+            return this.rowIds.includes(id);
         },
 
         selectRange(fromId, toId) {
             const tableBody = document.querySelector('#modal-table > tbody');
             if (!tableBody) return;
             const rows = Array.from(tableBody.querySelectorAll('tr'));
-            const fromIndex = rows.findIndex(row => parseInt(row.dataset.rowId) === fromId);
-            const toIndex = rows.findIndex(row => parseInt(row.dataset.rowId) === toId);
+            const fromIndex = rows.findIndex(row => parseInt(row.dataset.rowIds) === fromId);
+            const toIndex = rows.findIndex(row => parseInt(row.dataset.rowIds) === toId);
 
             if (fromIndex !== -1 && toIndex !== -1) {
                 const start = Math.min(fromIndex, toIndex);
                 const end = Math.max(fromIndex, toIndex);
 
                 for (let i = start; i <= end; i++) {
-                    const rowId = parseInt(rows[i].dataset.rowId);
-                    if (!this.rowId.includes(rowId)) {
-                        this.rowId.push(rowId);
+                    const rowIds = parseInt(rows[i].dataset.rowIds);
+                    if (!this.rowIds.includes(rowIds)) {
+                        this.rowIds.push(rowIds);
                     }
                 }
             }
@@ -50,13 +50,13 @@ document.addEventListener('alpine:init', () =>
 })
 
 
-// pomocna fce. pro zjisteni, co obsahuje pole rowId
+// pomocna fce. pro zjisteni, co obsahuje pole rowIds
 document.addEventListener('keydown', function(event) 
 {
     let string;
     if (event.altKey) 
     {
-        Alpine.store('Row').rowId.forEach(value => {
+        Alpine.store('Row').rowIds.forEach(value => {
             string += ' ' + value;
         });
          alert(string);
