@@ -11,14 +11,17 @@ document.addEventListener('alpine:init', () =>
             if (index = this.rowIds.indexOf(id) + 1) 
             {
                 this.rowIds.splice(index-1, 1);
+                this.lastClickedRowId = null;
             } 
             else {
                 if (shiftPressed) 
                 {
                     this.rowIds.push(id);
+                    this.lastClickedRowId = id;
                 } else {
                     this.rowIds.length = 0;
                     this.rowIds.push(id);
+                    this.lastClickedRowId = id;
                 }
             }
         },
