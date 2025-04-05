@@ -12,11 +12,11 @@ class ModalTable extends Component
     public $data;
 
 
-    public function delete($id)
+    public function delete(array $rowIds)
     {
-        $destroy_success =  Rgeocode::destroy($id);
+        $destroy_success =  Rgeocode::whereIn('id', $rowIds)->delete();
 
-        $this->dispatch('data-deleted', id: $id, destroy_success: $destroy_success);
+        $this->dispatch('data-deleted', destroy_success: $destroy_success);
     }
     
  
