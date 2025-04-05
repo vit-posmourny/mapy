@@ -8,9 +8,9 @@ document.addEventListener('alpine:init', () =>
         // array indexOf() method returns -1 if the value is not found
         // method returns the first index (position) of a specified value
         pushRowId(id) {
-            if (n = this.rowId.indexOf(id) + 1) 
+            if (index = this.rowId.indexOf(id) + 1) 
             {
-                this.rowId[n-1] = null;
+                this.rowId.splice(index-1, 1);
             } 
             else {
                 if (shiftPressed) 
@@ -28,7 +28,7 @@ document.addEventListener('alpine:init', () =>
         },
 
         selectRange(fromId, toId) {
-            const tableBody = document.querySelector('#modal_table tbody');
+            const tableBody = document.querySelector('#modal-table > tbody');
             if (!tableBody) return;
             const rows = Array.from(tableBody.querySelectorAll('tr'));
             const fromIndex = rows.findIndex(row => parseInt(row.dataset.rowId) === fromId);
@@ -40,8 +40,8 @@ document.addEventListener('alpine:init', () =>
 
                 for (let i = start; i <= end; i++) {
                     const rowId = parseInt(rows[i].dataset.rowId);
-                    if (!this.selectedRowIds.includes(rowId)) {
-                        this.selectedRowIds.push(rowId);
+                    if (!this.rowId.includes(rowId)) {
+                        this.rowId.push(rowId);
                     }
                 }
             }
