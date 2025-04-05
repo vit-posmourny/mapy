@@ -18,7 +18,7 @@
 
                     <div class="max-h-[50vh] lg:max-h-[25vh] overflow-y-auto modal_table">
                         <!-- Table -->
-                        <table class="text-base border-collapse border border-slate-400 w-auto">
+                        <table id="modal-table" class="text-base border-collapse border border-slate-400 w-auto">
 
                             <thead class="font-bold text-lg text-green-900 bg-green-200 w-12">
                                 <tr>
@@ -35,7 +35,13 @@
                     
                             <tbody class="text-nowrap">
                                 @foreach ($data as $row)
-                                    <tr x-on:click="$store.Row.pushRowId({{ $row['id'] }})" :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
+                                    <tr x-on:click="
+                                        if (shiftPressed && $store.Row.lastClickedRowId) {
+                                            $store.Row.selectRange($store.Row.lastClickedRowId, {{ $row['id'] }});
+                                        } else {
+                                            $store.Row.pushRowId({{ $row['id'] }});
+                                        }
+                                        " :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['id'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['label'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['location'] }}</td>
@@ -54,7 +60,7 @@
                     <!-- Modal buttons -->
                     <div class="flex mt-4 justify-end">
                         {{-- Delete button --}}
-                        <x-delete-button x-bind:disabled="$store.Row.rowId === null" wire:click="delete($store.Row.rowId)" class="mb-1"></x-delete-button>
+                        <x-delete-button x-bind:disabled="$store.Row.selectedRowIds.length === 0" wire:click="delete($store.Row.selectedRowIds)" class="mb-1"></x-delete-button>
                         {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                     </div>
@@ -84,84 +90,6 @@
 
 </div>
 
-<script>
-
-    let shiftPressed = false;
-
-    document.addEventListener('alpine:init', () => 
-    {
-        Alpine.store('Row', {
-            rowId: [],
-            // array indexOf() method returns -1 if the value is not found
-            // method returns the first index (position) of a specified value
-            pushRowId(id) {
-                if (n = this.rowId.indexOf(id) + 1) 
-                {
-                    this.rowId[n-1] = null;
-                } 
-                else {
-                    if (shiftPressed)
-                    {
-                        this.rowId.push(id);
-                    } else {
-
-                        this.purgeRowId();
-                        this.rowId.push(id);
-                    }
-                }
-                
-            },
-
-            findRowId(id) {
-                if (this.rowId.includes(id)) 
-                {
-                    return true;
-                } 
-                else {
-                    return false;
-                }
-            },
-
-            purgeRowId() {
-                this.rowId.length = 0;
-            }
-        })
-    })
-
-
-    // pomocna fce. pro zjisteni, co obsahuje pole rowId
-    document.addEventListener('keydown', function(event) 
-    {
-        let string;
-        if (event.altKey) 
-        {
-            Alpine.store('Row').rowId.forEach(value => {
-                string += ' ' + value;
-            });
-             alert(string);
-        }   
-
-         if (event.shiftKey)
-        {
-            shiftPressed = true;
-        }
-    })
-
-
-    document.addEventListener('keyup', function(event)
-    {
-        if (event.key === 'Shift')
-        {
-            shiftPressed = false;
-        }
-    })
-
-
-    document.addEventListener('deleteOk', () => 
-    {
-        Alpine.store('Row').purgeRowId();
-    })
-
-</script>
+<script src="{{ Vite::asset('resources/js/modal-table.js') }}"></script>
 
 
