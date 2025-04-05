@@ -35,7 +35,12 @@
                     
                             <tbody class="text-nowrap">
                                 @foreach ($data as $row)
-                                    <tr x-on:click="$store.Row.pushRowId({{ $row['id'] }})" :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
+                                    <tr x-on:click="if (shiftPressed && $store.Row.lastClickedRowId) {
+                                                        $store.Row.selectRange($store.Row.lastClickedRowId, {{ $row['id'] }});
+                                                    } else {
+                                                        $store.Row.pushRowId({{ $row['id'] }});
+                                                    }" 
+                                        :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['id'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['label'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['location'] }}</td>
