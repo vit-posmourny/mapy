@@ -38,9 +38,9 @@
                                     <tr x-on:click="if (shiftPressed && $store.Row.lastClickedRowId) {
                                                         $store.Row.selectRange($store.Row.lastClickedRowId, {{ $row['id'] }});
                                                     } else {
-                                                        $store.Row.pushRowId({{ $row['id'] }});
+                                                        $store.Row.pushRowIds({{ $row['id'] }});
                                                     }" 
-                                        :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
+                                        data-row-ids="{{$row['id']}}" :class="$store.Row.findRowId({{$row['id']}}) ? 'bg-green-100': ''">
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['id'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['label'] }}</td>
                                         <td class="border text-center px-2 border-slate-400 select-none">{{ $row['location'] }}</td>
@@ -59,7 +59,7 @@
                     <!-- Modal buttons -->
                     <div class="flex mt-4 justify-end">
                         {{-- Delete button --}}
-                        <x-delete-button x-bind:disabled="$store.Row.rowIds.lenght === 0" wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
+                        <x-delete-button x-bind:disabled="$store.Row.rowIds.length === 0" wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
                         {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                     </div>

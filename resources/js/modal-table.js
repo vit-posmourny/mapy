@@ -7,7 +7,7 @@ document.addEventListener('alpine:init', () =>
         lastClickedRowId: null,
         // array indexOf() method returns -1 if the value is not found
         // method returns the first index (position) of a specified value
-        pushRowId(id) {
+        pushRowIds(id) {
             if (index = this.rowIds.indexOf(id) + 1) 
             {
                 this.rowIds.splice(index-1, 1);
@@ -34,6 +34,8 @@ document.addEventListener('alpine:init', () =>
             const tableBody = document.querySelector('#modal-table > tbody');
             if (!tableBody) return;
             const rows = Array.from(tableBody.querySelectorAll('tr'));
+            // https://www.w3schools.com/jsref/jsref_findindex.asp
+            // https://www.w3schools.com/jsref/jsref_parseint.asp
             const fromIndex = rows.findIndex(row => parseInt(row.dataset.rowIds) === fromId);
             const toIndex = rows.findIndex(row => parseInt(row.dataset.rowIds) === toId);
 
@@ -62,10 +64,10 @@ document.addEventListener('keydown', function(event)
         Alpine.store('Row').rowIds.forEach(value => {
             string += ' ' + value;
         });
-         alert(string);
+        alert(string);
     }   
 
-     if (event.shiftKey)
+    if (event.shiftKey)
     {
         shiftPressed = true;
     }
@@ -83,5 +85,5 @@ document.addEventListener('keyup', function(event)
 
 document.addEventListener('deleteOk', () => 
 {
-    Alpine.store('Row').purgeRowId();
+    Alpine.store('Row').rowIds.length = 0;
 })
