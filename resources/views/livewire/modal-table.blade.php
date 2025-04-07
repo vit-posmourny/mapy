@@ -6,6 +6,7 @@
         <div class="flex justify-between px-3 pt-1 h-6">
 
             <h2 class="text-xl font-bold select-none">Uložená místa</h2>
+            {{-- TODO: přidat kolem X šedé kolečko při hoveru --}}
             <button x-on:click="open = false" class="text-lg ml-3 text-gray-600 hover:text-gray-900">X</button>
 
         </div>
@@ -59,6 +60,7 @@
                     <!-- Modal buttons -->
                     <div class="flex mt-4 justify-end">
                         {{-- Delete button --}}
+                        {{-- TODO: umožnit, aby fungovalo disabled button --}}
                         <x-delete-button x-bind:disabled="$store.Row.rowIds.length === 0" wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
                         {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
