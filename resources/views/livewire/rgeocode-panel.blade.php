@@ -34,7 +34,7 @@
  
     </form>
 
-        <div x-data="{ open: false }" class="flex flex-col">
+        <div x-data="{ open: false, disabled: true, init() { this.$watch('$store.Row.rowIds.length', (length) => { this.disabled = length === 0; }); } }" class="flex flex-col">
             
             <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full hidden portrait:block lg:block">
                     Uložená místa
@@ -52,3 +52,5 @@
 
         </div>
 </div>
+
+<script src="{{ Vite::asset('resources/js/modal-table.js')}}"></script>

@@ -6,5 +6,5 @@
         @else
             <img class="w-8 h-8" src="{{ Vite::svg('delete_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
         @endif
-
+  
 </button>
