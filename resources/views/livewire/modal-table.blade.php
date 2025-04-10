@@ -59,15 +59,23 @@
                     </div>
                     <!-- Modal buttons -->
                     <div class="flex mt-4 justify-end">
-                        {{-- Delete button --}}
-                        {{-- TODO: umožnit, aby fungovalo disabled button --}}
-                        <x-delete-button x-bind:disabled="$store.Row.rowIds.length === 0" wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
+                        <template x-if="disabled">
+                            {{-- disabled Delete button  --}}
+                            <x-delete-button-disabled class="mb-1"></x-delete-button-disabled>
+                            
+                        </template>
+                        <template x-if="!disabled">
+                            {{-- Delete button  --}}
+                            <x-delete-button wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
+
+                        </template>
+
                         {{-- Close button --}}
                         <x-non-submit-button x-on:click="open = false" class="mx-2 mb-1">Close</x-non-submit-button>
                     </div>
 
-                </div>  
-
+                </div>
+               
             @endif 
                 
             @if (session('readData_success') === false)
@@ -90,5 +98,3 @@
     </div>
 
 </div>
-
-<script src="{{ Vite::asset('resources/js/modal-table.js')}}"></script>
