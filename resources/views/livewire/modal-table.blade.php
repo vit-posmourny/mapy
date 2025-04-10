@@ -66,7 +66,7 @@
                         </template>
                         <template x-if="!disabled">
                             {{-- Delete button  --}}
-                            <x-delete-button wire:click="delete($store.Row.rowIds)" class="mb-1"></x-delete-button>
+                            <x-delete-button wire:click="delete($store.Row.rowIds)" x-on:click="$el.classList.add('animate-[ping_0.5s_ease-in-out_1]')" class="mb-1"></x-delete-button>
 
                         </template>
 
