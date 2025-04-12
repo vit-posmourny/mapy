@@ -3,11 +3,15 @@
     {{-- @click.stop="" on the modal content: This is crucial. It prevents the click event from bubbling up to the overlay, so clicks inside the modal don't close it. --}}
     <div class=" portrait:w-screen bg-white max-w-2xl lg:max-w-fit rounded-lg shadow-lg p-2" @click.stop="" @keydown.escape.window="open = false">
         <!-- Header -->
-        <div class="flex justify-between px-3 pt-1 h-6">
+        <div class="relative flex justify-between px-3 pt-1 h-8">
 
             <h2 class="text-xl font-bold select-none">Uložená místa</h2>
             {{-- TODO: přidat kolem X šedé kolečko při hoveru --}}
-            <button x-on:click="open = false" class="text-lg ml-3 text-gray-600 hover:text-gray-900">X</button>
+            <div class="absolute size-8 rounded-md top-0 right-0 mr-1 p-1 hover:bg-zinc-100">
+                <svg x-on:click="open = false" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-zinc-600 hover:stroke-zinc-950">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
 
         </div>
 
@@ -15,7 +19,7 @@
 
             @if (session('readData_success') === true)
     |       
-                <div class="mt-4">
+                <div class="mt-2">
 
                     <div class="max-h-[50vh] lg:max-h-[25vh] overflow-y-auto modal_table">
                         <!-- Table -->
