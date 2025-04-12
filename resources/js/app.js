@@ -1,11 +1,7 @@
 import './bootstrap';
-import resize from '@alpinejs/resize'
-
-Alpine.plugin(resize)
-
 
 import.meta.glob([
-    //'../images/**',
+    '../images/**',
 ]);
 
 // LiveWire 3 už přichází s Alpine.js, takže import, který dodává Breeze je zbytečný

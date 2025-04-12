@@ -30,20 +30,20 @@
             {{-- buttons --}}
             <x-submit-button class="hidden w-full mt-4 portrait:block portrait:mb-2 lg:block lg:mb-4">Uložit do databáze</x-submit-button>
         
-            <x-submit-button class="mt-4 mb-2 portrait:hidden lg:hidden"><img src="images\svg\database_upload_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"/></x-submit-button>
+            <x-submit-button class="mt-4 mb-2 portrait:hidden lg:hidden"><img src="{{ Vite::svg('database_upload_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}" alt="database upload"/></x-submit-button>
  
     </form>
 
-        <div x-data="{ open: false }" class="flex flex-col">
+        <div x-data="{ open: false, disabled: true, init() { this.$watch('$store.Row.rowIds.length', (length) => { this.disabled = length === 0; }); } }" class="flex flex-col">
             
             <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full hidden portrait:block lg:block">
                     Uložená místa
             </x-primary-button>
 
             <x-primary-button x-on:click="open = true" wire:click='readData' class="w-full portrait:hidden lg:hidden">
-                <img src="images\svg\database_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"/>
-                <img src="images\svg\chevron_right_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"/>
-                <img src="images\svg\table_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg"/>
+                <img src="{{ Vite::svg('database_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
+                <img src="{{ Vite::svg('chevron_right_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
+                <img src="{{ Vite::svg('table_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}"> 
             </x-primary-button>
             
             @livewire('modal-table', ['data' => $data])
@@ -52,3 +52,5 @@
 
         </div>
 </div>
+
+<script src="{{ Vite::asset('resources/js/modal-table.js')}}"></script>

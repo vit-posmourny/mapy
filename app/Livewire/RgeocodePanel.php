@@ -122,13 +122,13 @@ class RgeocodePanel extends Component
     }
 
 
-    public function refreshData($id, $destroy_success)
+    public function refreshData($destroy_success)
     {
         $this->readData();
 
         session()->flash('delete_success', $destroy_success);
 
-        $this->dispatch('deleteOk', id: $id);
+        $this->dispatch('deleteOk');
     }
 
 
