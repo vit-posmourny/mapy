@@ -45,7 +45,12 @@
                 <img src="{{ Vite::svg('chevron_right_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}">
                 <img src="{{ Vite::svg('table_24dp_F7FEE7_FILL0_wght400_GRAD0_opsz24.svg') }}"> 
             </x-primary-button>
-            
+            <div class="group relative inline-block">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-md overflow-hidden">
+                  Hover Me
+                  <span class="absolute bottom-0 left-0 w-10 h-10 rounded-full bg-gray-400 opacity-0 transition-opacity duration-300 group-hover:opacity-50 pointer-events-none"></span>
+                </button>
+              </div>
             @livewire('modal-table', ['data' => $data])
             {{-- musí tu být wire:model --}}
             <livewire:modal-table wire:model='data'/>

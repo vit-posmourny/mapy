@@ -7,7 +7,9 @@
 
             <h2 class="text-xl font-bold select-none">Uložená místa</h2>
             {{-- TODO: přidat kolem X šedé kolečko při hoveru --}}
-            <button x-on:click="open = false" class="text-lg ml-3 text-gray-600 hover:text-gray-900">X</button>
+            <button x-on:click="open = false" class="relative group text-lg mr-2 text-gray-600 hover:text-gray-900">X
+                <span class="absolute size-10 -top-2 -left-3.5 rounded-md bg-gray-400 opacity-10 transition-opacity duration-300 group-hover:opacity-50 pointer-events-none"></span>
+            </button>
 
         </div>
 
