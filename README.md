@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://drive.google.com/file/d/1QvwkUjBLtvYhC327LYKrLW74rCloUYRe/view?usp=sharing" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/vit-posmourny/mapy/blob/14330bffd4dab981ab907ddac36aa2e3a3206d33/z.readme%20files/mapy%20(1)%20maly.png" width="400" alt="Laravel Logo"></a></p>
 
 ## Mapy
 
