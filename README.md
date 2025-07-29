@@ -1,4 +1,4 @@
-<span align="center">
+<p align="center">
     <a href="https://github.com/vit-posmourny/mapy/blob/77d27456cf5519499dc69298734247e89a8eb85d/z.readme%20files/mapy%20(1)%20velky.png" target="_blank">
         <img src="https://github.com/vit-posmourny/mapy/blob/14330bffd4dab981ab907ddac36aa2e3a3206d33/z.readme%20files/mapy%20(1)%20maly.png" width="300" alt="mapy1">
     </a>
@@ -8,7 +8,7 @@
     <a href="https://github.com/vit-posmourny/mapy/blob/f72c095b5e5532001f699030156fbf8cbb95c276/z.readme%20files/mapy%20(3)%20velky.png" target="_blank">
         <img src="https://github.com/vit-posmourny/mapy/blob/f72c095b5e5532001f699030156fbf8cbb95c276/z.readme%20files/mapy%20(3)%20maly.png" width="300" alt="mapy3">
     </a>
-</span>
+</p>
 
 
 ## Mapy
