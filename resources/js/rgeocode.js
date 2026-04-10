@@ -1,5 +1,5 @@
 // replace with your own API key
-const API_KEY = 'const API_KEY = window.MAPY_API_KEY;';
+const API_KEY = window.MAPY_API_KEY;
 
 /*
 We create the map and set its initial coordinates and zoom.
@@ -64,7 +64,7 @@ map.on('click', async function mapClick(e) {
 	let lat_elem = null;
 	let lon_elem = null;
 	let regional_address = '';
-    let regional_street = ''; 
+    let regional_street = '';
     let regional_municipality_part_1 = '';
     let regional_municipality_part_2 = '';
     let regional_municipality = '';
@@ -87,7 +87,7 @@ map.on('click', async function mapClick(e) {
 				loc_elem.value = item.location;
 				name_elem.value = item.name;
 				zip_elem.value = item.zip ?? 'n/a';
-				
+
 				lat_elem = item.position.lat;
 				lon_elem = item.position.lon;
 
@@ -101,7 +101,7 @@ map.on('click', async function mapClick(e) {
 					}
 					else if (index.type == 'regional.street') {
 						regional_street = index.name;
-					} 
+					}
 					else if (index.type == 'regional.municipality_part') {
 						if (a == 1) {
 							regional_municipality_part_1 = index.name;
@@ -109,11 +109,11 @@ map.on('click', async function mapClick(e) {
 						} else if (a == 2) {
 							regional_municipality_part_2 = index.name;
 						}
-					} 
+					}
 					else if (index.type == 'regional.municipality') {
 						regional_municipality = index.name;
 					}
-					else if (index.type == 'regional.region') {	
+					else if (index.type == 'regional.region') {
 						if (b == 1) {
 							regional_region_1 = index.name;
 							b++;
@@ -124,7 +124,7 @@ map.on('click', async function mapClick(e) {
 					else if (index.type == 'regional.country') {
 						regional_country = index.name;
 					}
-					else (index.isoCode) 
+					else (index.isoCode)
 						isoCode = index.isoCode;
 				})
 			})

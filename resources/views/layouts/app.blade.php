@@ -44,16 +44,25 @@
                 @if (request()->path() === 'elevation')
 
                     <livewire:elevation-panel/>
+                    <script>
+                        window.MAPY_API_KEY = @json(env('MAPY_API_KEY'));
+                    </script>
                     <script src="{{ Vite::asset('resources/js/elevation.js') }}"></script>
 
                 @elseif (request()->path() === 'rgeocode')
 
                     <livewire:rgeocode-panel/>
-                    <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script> 
+                    <script>
+                        window.MAPY_API_KEY = @json(env('MAPY_API_KEY'));
+                    </script>
+                    <script src="{{ Vite::asset('resources/js/rgeocode.js') }}"></script>
 
                 @elseif (request()->path() === 'geocode')
-                
+
                     <livewire:geocode-panel/>
+                    <script>
+                        window.MAPY_API_KEY = @json(env('MAPY_API_KEY'));
+                    </script>
                     <script src="{{ Vite::asset('resources/js/geowhisper.js') }}"></script>
 
                 @endif

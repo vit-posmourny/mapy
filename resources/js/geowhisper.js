@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////// WHISPERING ///////////////////////////////////////////////////////
 
 // replace with your own API key
-const API_KEY = 'const API_KEY = window.MAPY_API_KEY;';
+const API_KEY = window.MAPY_API_KEY;
 
 const form = document.getElementById('i-geo-form');
 const input = document.getElementById('i-search-field');
@@ -13,7 +13,7 @@ const getItems = async(query) => {
     if (queryCache[query]) {
         return queryCache[query];
     }
-    
+
     try {
         // you need to use your own api key!
         const fetchData = await fetch(`https://api.mapy.cz/v1/suggest?lang=cs&limit=5&type=regional.address&apikey=${API_KEY}&query=${query}`);
@@ -23,12 +23,12 @@ const getItems = async(query) => {
             value: item.name,
             data: item,
         }));
-        
+
         // save to cache
         queryCache[query] = items;
-        
+
         return items;
-    } 
+    }
     catch (exc) {
         return [];
     }
@@ -43,7 +43,7 @@ const autoCompleteJS = new autoComplete({
         src: async(query) => {
         // get items for current query
             const items = await getItems(query);
-            
+
             // cache hit? - there is a problem, because this provider needs to get items
             // for each query and cannot handle different timeouts for different query.
             // if previous query was completed - it's already in the cache, and some
@@ -59,7 +59,7 @@ const autoCompleteJS = new autoComplete({
         element: (item, data) => {
             const itemData = data.value.data;
             const desc = document.createElement("div");
-        
+
             desc.style = "overflow: hidden; white-space: nowrap; text-overflow: ellipsis;";
             desc.innerHTML = `${itemData.label}, ${itemData.location}`;
             item.append(desc,);
@@ -70,10 +70,10 @@ const autoCompleteJS = new autoComplete({
         element: (list, data) => {
             list.style.maxHeight = "max-content";
             list.style.overflow = "hidden";
-    
+
             if (!data.results.length) {
                 const message = document.createElement("div");
-                
+
                 message.setAttribute("class", "no_result");
                 message.style = "padding: 5px";
                 message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
@@ -82,7 +82,7 @@ const autoCompleteJS = new autoComplete({
                 const logoHolder = document.createElement("div");
                 const text = document.createElement("span");
                 const img = new Image();
-                
+
                 logoHolder.style = "padding: 5px; display: flex; align-items: center; justify-content: end; gap: 5px; font-size: 12px;";
                 text.textContent = "Powered by";
                 img.src = "https://api.mapy.cz/img/api/logo-small.svg";
@@ -164,7 +164,7 @@ const map = new maplibregl.Map(
 
       return this._container;
     }
-  
+
     onRemove() {
       this._container.parentNode.removeChild(this._container);
       this._map = undefined;
@@ -208,7 +208,7 @@ markerElement.style.width = '20px';
 markerElement.style.height = '20px';
 
 
-async function geocode(query) 
+async function geocode(query)
 {
     try {
         const url = new URL(`https://api.mapy.cz/v1/geocode`);
@@ -236,17 +236,17 @@ async function geocode(query)
                 .setLngLat([item.position.lon, item.position.lat])
                 .addTo(map);
         });
-        
+
         // jestliže bude marker/hit pouze jeden nastaví správně boundingbox
         var coordArr = [];
 
         if (json.items.length == 1)
         {
-            coordArr = json.items[0].bbox;            
+            coordArr = json.items[0].bbox;
         }else {
             coordArr = bbox(json.items.map(item => ([item.position.lon, item.position.lat])))
         }
-        
+
         // finally we set the map to show the whole geometry in the viewport
         map.jumpTo(
             map.cameraForBounds(
@@ -256,7 +256,7 @@ async function geocode(query)
                 }
             )
         );
-    } 
+    }
     catch (ex) {
       console.log(ex);
     }
