@@ -1,5 +1,5 @@
 // replace with your own API key
-const API_KEY = window.MAPY_API_KEY;
+const API_KEY = 'const API_KEY = window.MAPY_API_KEY;';
 /*
 We create the map and set its initial coordinates and zoom.
 See https://leafletjs.com/reference.html#map
