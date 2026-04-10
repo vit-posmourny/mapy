@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////// WHISPERING ///////////////////////////////////////////////////////
 
 // replace with your own API key
-const API_KEY = const API_KEY = window.MAPY_API_KEY;;
+const API_KEY = window.MAPY_API_KEY;
 
 const form = document.getElementById('i-geo-form');
 const input = document.getElementById('i-search-field');
